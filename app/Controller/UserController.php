@@ -6,5 +6,10 @@ namespace App\Controller;
 
 class UserController
 {
+    public function isAdmin()
+    {
+
+    }
+
 
 }
