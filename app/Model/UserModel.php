@@ -33,7 +33,7 @@ class UserModel extends Model
 
     public static function insertUser(string $name, string $firstname, string $mail, string $password): void
     {
-        $token = UserModel::generateToken(255);
+        $token = Tools::generateToken(255);
         $sql = "INSERT INTO " . self::getTable() . " VALUES()";
         App::getDatabase()->prepareInsert($sql, []);
     }
