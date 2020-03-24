@@ -10,37 +10,38 @@ use App\Service\Tools;
 class UserModel extends Model
 {
     protected static $table = 't_users';
-    private int $idUsers;
+    private $idUsers;
     private $nom;
     private $prenom;
     private $adresse;
     private $job;
     private $lieuJob;
-    private int $telJob;
+    private $telJob;
     private $telephone;
     private $mail;
     private $nomConjoin;
     private $prenomConjoin;
     private $adresseConjoin;
-    private int $telephoneConjoin;
-    private int $mobileConjoin;
+    private $telephoneConjoin;
+    private $mobileConjoin;
     private $jonCoinjoin;
     private $lieuConjoin;
+    private $password;
     private $token;
     private $createdAt;
     private $modifiedAt;
 
 
-    public static function insertUser(string $name, string $firstname, string $mail, string $password): void
+    public static function insertUser(string $nom, string $prenom, string $mail, string $password): void
     {
         $token = Tools::generateToken(255);
-        $sql = "INSERT INTO " . self::getTable() . " VALUES()";
-        App::getDatabase()->prepareInsert($sql, []);
+        $sql = "INSERT INTO " . self::getTable() . " VALUES(NULL,?,?,NULL,NULL,NULL,NULL,NULL,?,NULL,NULL,NULL,NULL,NULL,NULL,NULL,?,?,NOW(),NULL)";
+        App::getDatabase()->prepareInsert($sql, [$nom, $prenom, $mail, $password, $token]);
     }
 
     public static function userLogin(string $email)
     {
-        $sql = "SELECT * FROM " . self::getTable() . " WHERE email= ?";
+        $sql = "SELECT * FROM " . self::getTable() . " WHERE mail= ?";
         return App::getDatabase()->prepare($sql, [$email], get_called_class(),true);
     }
 
@@ -370,5 +371,23 @@ class UserModel extends Model
     {
         $this->modifiedAt = $modifiedAt;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param mixed $password
+     */
+    public function setPassword($password): void
+    {
+        $this->password = $password;
+    }
+
+
 
 }

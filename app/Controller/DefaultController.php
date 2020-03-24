@@ -3,6 +3,9 @@
 namespace App\Controller;
 
 use App\Repository\Controller;
+use App\Service\Form;
+use App\Service\Validation;
+use App\Model\UserModel;
 
 /**
  *
@@ -68,9 +71,26 @@ class DefaultController extends Controller
     {
         $message = 'Inscription';
 
-        $this->render('app.default.register',array(
-            'message'   => $message,
-        ));
+        $errors = array();
+        $form = new Form($errors, 'post');
+        if (isset($_POST['submitted'])) {
+            $post = $this->cleanXss($_POST);
+            $validation = new Validation();
+            $errors['nom'] = $validation->textValid($post['nom'], 'nom', 2, 50);
+            $errors['nom'] = $validation->textValid($post['prenom'], 'prenom', 2, 50);
+            $errors['mail'] = $validation->emailValid($post['mail']);
+            $errors['password'] = $validation->textValid($post['password'], 'password', 2, 50);
+            $errors['cfrm'] = $validation->generateErrorRepeat($post['password'], $post['cfrm'], 'Les mots de passe ne correspondent pas');
+            $errors['cgu'] = $validation->generateErrorCheckBox($post['cgu'], 'Veuillez accepter les conditions d\'utilisation.');
+            $this->debug($errors);
+            if ($validation->IsValid($errors) == true) {
+                $hash = password_hash($post['password'], PASSWORD_DEFAULT);
+                UserModel::insertUser($post['nom'], $post['prenom'], $post['mail'], $hash);
+            }
+        }
+
+        $this->render('app.default.register', compact('message', 'form', 'errors')
+        );
     }
 
     /**
