@@ -19,7 +19,7 @@ $validation = new \App\Service\Validation();
               <li><a href="<?= $view->path('home'); ?>">Home</a></li>
               <li><a href="<?= $view->path('contact'); ?>">Contact</a></li>
               <?php if ($validation->isLogged() == true) { ?>
-                  <li><a href="#">Mon Compte</a></li>
+                  <li><a href="<?= $view->path('account') ?>">Mon Compte</a></li>
                   <li><a href="<?= $view->path('logout') ?>">Déconnexion</a></li>
               <?php } else { ?>
                   <li><a href="<?= $view->path('login'); ?>">Connexion</a></li>

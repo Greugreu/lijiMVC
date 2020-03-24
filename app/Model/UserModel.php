@@ -53,6 +53,11 @@ class UserModel extends Model
             $post['password'], $post['created_at'], $post['modified_at'], $post['roles'], $post['token']]);
     }
 
+    public static function findUsersById($id,$columId = 'idUsers')
+    {
+        return App::getDatabase()->prepare("SELECT * FROM " . self::getTable() . " WHERE ".$columId." = ?",[$id],get_called_class(),true);
+    }
+
     /**
      * @return mixed
      */
