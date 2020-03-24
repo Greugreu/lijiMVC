@@ -1,3 +1,7 @@
+<?php
+$validation = new \App\Service\Validation();
+?>
+
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
@@ -14,8 +18,13 @@
           <ul>
               <li><a href="<?= $view->path('home'); ?>">Home</a></li>
               <li><a href="<?= $view->path('contact'); ?>">Contact</a></li>
-              <li><a href="<?= $view->path('login'); ?>">Connexion</a></li>
-              <li><a href="<?= $view->path('register'); ?>">Inscritpion</a></li>
+              <?php if ($validation->isLogged() == true) { ?>
+                  <li><a href="#">Mon Compte</a></li>
+                  <li><a href="<?= $view->path('logout') ?>">Déconnexion</a></li>
+              <?php } else { ?>
+                  <li><a href="<?= $view->path('login'); ?>">Connexion</a></li>
+                  <li><a href="<?= $view->path('register'); ?>">Inscritpion</a></li>
+              <?php } ?>
               <li><a href="<?= $view->path('single',array(12)); ?>">Single</a></li>
               <li><a href="<?= $view->path('single2',array(12,'dedede')); ?>">Single2</a></li>
           </ul>

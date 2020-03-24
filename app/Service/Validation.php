@@ -5,6 +5,15 @@ class Validation
 {
     protected $errors = array();
 
+    public function isLogged(): bool
+    {
+        if (!empty($_SESSION)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function IsValid($errors)
     {
         foreach ($errors as $key => $value) {

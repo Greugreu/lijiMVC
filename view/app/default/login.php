@@ -31,4 +31,6 @@ Tools::debug($_SESSION);
     </div>
 </form>
 
+<a href="<?= $view->path('forgot'); ?>">Mot de passe oublié ?</a>
+
 <?php

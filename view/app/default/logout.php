@@ -1,5 +1,3 @@
-<h1>
-    <?= $message ?>
-</h1>
-
 <?php
+header('Location: home');
+?>

@@ -7,7 +7,10 @@ $routes = array(
     array('logout', 'default', 'logout'),
     array('contact', 'default', 'contact'),
     array('login', 'default', 'login'),
-    array('register', 'default', 'register')
+    array('register', 'default', 'register'),
+    array('forgot', 'default', 'forgot'),
+    array('changePassword', 'default', 'changePassword',),
+    array('logout', 'default', 'logout')
 );
 
 
