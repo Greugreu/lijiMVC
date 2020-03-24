@@ -28,6 +28,7 @@ class UserModel extends Model
     private $lieuConjoin;
     private $password;
     private $token;
+    private $role;
     private $createdAt;
     private $modifiedAt;
 
@@ -35,11 +36,11 @@ class UserModel extends Model
     public static function insertUser(string $nom, string $prenom, string $mail, string $password): void
     {
         $token = Tools::generateToken(255);
-        $sql = "INSERT INTO " . self::getTable() . " VALUES(NULL,?,?,NULL,NULL,NULL,NULL,NULL,?,NULL,NULL,NULL,NULL,NULL,NULL,NULL,?,?,NOW(),NULL)";
+        $sql = "INSERT INTO " . self::getTable() . " VALUES(NULL,?,?,NULL,NULL,NULL,NULL,NULL,?,NULL,NULL,NULL,NULL,NULL,NULL,NULL,?,?,1,NOW(),NULL)";
         App::getDatabase()->prepareInsert($sql, [$nom, $prenom, $mail, $password, $token]);
     }
 
-    public static function userLogin(string $email)
+    public static function findUserByMail(string $email)
     {
         $sql = "SELECT * FROM " . self::getTable() . " WHERE mail= ?";
         return App::getDatabase()->prepare($sql, [$email], get_called_class(),true);
@@ -53,33 +54,17 @@ class UserModel extends Model
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public static function getTable(): string
-    {
-        return self::$table;
-    }
-
-    /**
-     * @param string $table
-     */
-    public static function setTable(string $table): void
-    {
-        self::$table = $table;
-    }
-
-    /**
-     * @return int
-     */
-    public function getIdUsers(): int
+    public function getId()
     {
         return $this->idUsers;
     }
 
     /**
-     * @param int $idUsers
+     * @param mixed $idUsers
      */
-    public function setIdUsers(int $idUsers): void
+    public function setId($idUsers): void
     {
         $this->idUsers = $idUsers;
     }
@@ -165,17 +150,17 @@ class UserModel extends Model
     }
 
     /**
-     * @return int
+     * @return mixed
      */
-    public function getTelJob(): int
+    public function getTelJob()
     {
         return $this->telJob;
     }
 
     /**
-     * @param int $telJob
+     * @param mixed $telJob
      */
-    public function setTelJob(int $telJob): void
+    public function setTelJob($telJob): void
     {
         $this->telJob = $telJob;
     }
@@ -200,6 +185,11 @@ class UserModel extends Model
      * @return mixed
      */
     public function getMail()
+    {
+        return $this->mail;
+    }
+
+    public function getEmail()
     {
         return $this->mail;
     }
@@ -261,33 +251,33 @@ class UserModel extends Model
     }
 
     /**
-     * @return int
+     * @return mixed
      */
-    public function getTelephoneConjoin(): int
+    public function getTelephoneConjoin()
     {
         return $this->telephoneConjoin;
     }
 
     /**
-     * @param int $telephoneConjoin
+     * @param mixed $telephoneConjoin
      */
-    public function setTelephoneConjoin(int $telephoneConjoin): void
+    public function setTelephoneConjoin($telephoneConjoin): void
     {
         $this->telephoneConjoin = $telephoneConjoin;
     }
 
     /**
-     * @return int
+     * @return mixed
      */
-    public function getMobileConjoin(): int
+    public function getMobileConjoin()
     {
         return $this->mobileConjoin;
     }
 
     /**
-     * @param int $mobileConjoin
+     * @param mixed $mobileConjoin
      */
-    public function setMobileConjoin(int $mobileConjoin): void
+    public function setMobileConjoin($mobileConjoin): void
     {
         $this->mobileConjoin = $mobileConjoin;
     }
@@ -327,6 +317,22 @@ class UserModel extends Model
     /**
      * @return mixed
      */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param mixed $password
+     */
+    public function setPassword($password): void
+    {
+        $this->password = $password;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getToken()
     {
         return $this->token;
@@ -338,6 +344,22 @@ class UserModel extends Model
     public function setToken($token): void
     {
         $this->token = $token;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * @param mixed $role
+     */
+    public function setRole($role): void
+    {
+        $this->role = $role;
     }
 
     /**
@@ -371,23 +393,5 @@ class UserModel extends Model
     {
         $this->modifiedAt = $modifiedAt;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * @param mixed $password
-     */
-    public function setPassword($password): void
-    {
-        $this->password = $password;
-    }
-
-
 
 }

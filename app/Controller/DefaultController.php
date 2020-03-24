@@ -6,6 +6,7 @@ use App\Repository\Controller;
 use App\Service\Form;
 use App\Service\Validation;
 use App\Model\UserModel;
+use http\Client\Curl\User;
 
 /**
  *
@@ -62,9 +63,34 @@ class DefaultController extends Controller
     {
         $message = 'Connexion';
 
-        $this->render('app.default.login',array(
-            'message'   => $message,
-        ));
+        $errors = array();
+        $form = new Form();
+        if (!empty($_POST['submitted'])) {
+            $post = $this->cleanXss($_POST);
+            $validation = new Validation();
+            $errors['mail'] = $validation->emailValid($post['mail']);
+
+            if ($validation->IsValid($errors) == true) {
+                $user = UserModel::findUserByMail($post['mail']);
+                if ($user->mail === $post['mail'] && password_verify($post['password'], $user->password)) {
+                    $_SESSION = array(
+                        'id' => $user->id,
+                        'nom' => $user->nom,
+                        'prenom' => $user->prenom,
+                        'role' => $user->role,
+                        'email' => $user->email,
+                        'ip' => $_SERVER['REMOTE_ADDR'],
+                    );
+                    echo 'ça passe';
+                } else {
+                    $errors['password'] = 'Mail ou mot de passe incorrect';
+                }
+            } else {
+                $errors['login'] = 'Erreur dans les identifiants';
+            }
+        }
+
+        $this->render('app.default.login', compact('message', 'form', 'errors'));
     }
 
     public function register()
@@ -82,7 +108,7 @@ class DefaultController extends Controller
             $errors['password'] = $validation->textValid($post['password'], 'password', 2, 50);
             $errors['cfrm'] = $validation->generateErrorRepeat($post['password'], $post['cfrm'], 'Les mots de passe ne correspondent pas');
             $errors['cgu'] = $validation->generateErrorCheckBox($post['cgu'], 'Veuillez accepter les conditions d\'utilisation.');
-            $this->debug($errors);
+
             if ($validation->IsValid($errors) == true) {
                 $hash = password_hash($post['password'], PASSWORD_DEFAULT);
                 UserModel::insertUser($post['nom'], $post['prenom'], $post['mail'], $hash);
