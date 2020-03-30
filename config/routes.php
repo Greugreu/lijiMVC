@@ -14,7 +14,8 @@ $routes = array(
     array('logout', 'default', 'logout'),
 
     // user routes
-    array('account', 'user', 'account')
+    array('account', 'user', 'account'),
+    array('account',array('accountKids', 'user', 'accountKids'))
 );
 
 

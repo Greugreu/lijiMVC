@@ -1,10 +1,10 @@
 <?php
 
 return array(
-    'db_name'   => '',
-    'db_user'   => '',
+    'db_name'   => 'liji',
+    'db_user'   => 'root',
     'db_pass'   => '',
-    'db_host'   => '',
+    'db_host'   => 'localhost',
 
-    'directory' => ''
+    'directory' => '/liji/view'
 );

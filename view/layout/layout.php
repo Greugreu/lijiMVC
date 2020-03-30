@@ -12,8 +12,8 @@ $validation = new \App\Service\Validation();
   </head>
   <body>
 
-
     <header>
+        <img src="asset/img/logo.png" alt="" class="logo">
       <nav>
           <ul>
               <li><a href="<?= $view->path('home'); ?>">Home</a></li>
