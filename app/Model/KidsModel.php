@@ -27,7 +27,7 @@ class KidsModel extends Model
 FROM table1
 LEFT JOIN table2 ON table1.id = table2.fk_id */
 
-    public static function findKidsByUser($id)
+    public static function findKidsByUser($id): object
     {
         $sql = "SELECT * FROM " . self::getTable() . " WHERE users_idUsers= ?";
         return App::getDatabase()->prepare($sql, [$id], get_called_class(),true);

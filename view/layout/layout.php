@@ -9,11 +9,13 @@ $validation = new \App\Service\Validation();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liji</title>
     <link rel="stylesheet" type="text/css" href="<?= $view->asset('css/style.css'); ?>">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
   </head>
   <body>
     <div class="wrap">
         <header>
-            <img src="asset/img/logo.png" class="logo" alt="" class="logo">
+            <img src="asset/img/logo.png" class="logo" alt="" >
             <nav class="home-nav">
                 <ul>
                     <li><a href="<?= $view->path('home'); ?>">Home</a></li>
