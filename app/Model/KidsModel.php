@@ -4,7 +4,13 @@
 namespace App\Model;
 
 
-class KidsModel
+use App\Repository\Database;
+use App\Repository\Model;
+use App\App;
+use App\Service\Tools;
+
+
+class KidsModel extends Model
 {
     protected static $table = 'kids';
     private int $idkids;
@@ -16,6 +22,16 @@ class KidsModel
     private $handicap;
     private $handicapPlus;
     private $directives;
+
+/* SELECT *
+FROM table1
+LEFT JOIN table2 ON table1.id = table2.fk_id */
+
+    public static function findKidsByUser($id)
+    {
+        $sql = "SELECT * FROM " . self::getTable() . " WHERE users_idUsers= ?";
+        return App::getDatabase()->prepare($sql, [$id], get_called_class(),true);
+    }
 
     /**
      * @return string

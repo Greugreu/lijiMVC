@@ -1,2 +1,46 @@
 @import "reset.css";
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
+.wrap {
+    max-width: 1600px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+body {
+   font-family: 'roboto', 'sans-serif';
+}
+
+
+/****** HEADER *******/
+.home-nav ul li {
+    display: inline-block;
+    background-color: lime;
+    float: right;
+    padding: 5px;
+    text-align: center;
+}
+
+.logo {
+    display: inline;
+    background-color: lime;
+    width: 300px;
+    float: left;
+}
+
+.banner {
+    width : 100%
+}
+
+/******* BODY *******/
+
+.search {
+    border-radius: 40px 40px 40px 40px;
+    -moz-border-radius: 40px 40px 40px 40px;
+    -webkit-border-radius: 40px 40px 40px 40px;
+    border: 1px solid #000000;
+    width: 300px;
+    height: 300px;
+}
+
+/******* FOOTER *******/

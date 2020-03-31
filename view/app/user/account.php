@@ -5,7 +5,7 @@
 <div class="account-nav">
     <nav>
         <ul>
-            <li><a href="<?= $view->path('account',array('accountKids')) ?>">Mes enfants</a></li>
+            <li><a href="<?= $view->path('accountKids') ?>">Mes enfants</a></li>
         </ul>
     </nav>
 </div>

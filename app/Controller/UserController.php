@@ -23,12 +23,7 @@ class UserController extends Controller
         $this->render('app.user.account', compact('message','user'));
     }
 
-    public function accountKids()
-    {
-        $message = 'Tu y est Coco';
 
-        $this->render('app.user.accountKids', compact('message'));
-    }
 
 
 }
