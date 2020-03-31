@@ -16,7 +16,7 @@ class KidsModel extends Model
     private int $idkids;
     private $nom;
     private $prenom;
-    private int $age;
+    private $dateNaissance;
     private $allergies;
     private $allergiesPlus;
     private $handicap;
@@ -27,26 +27,20 @@ class KidsModel extends Model
 FROM table1
 LEFT JOIN table2 ON table1.id = table2.fk_id */
 
-    public static function findKidsByUser($id): object
+    public static function findAllKidsByUser($id)
     {
         $sql = "SELECT * FROM " . self::getTable() . " WHERE users_idUsers= ?";
         return App::getDatabase()->prepare($sql, [$id], get_called_class(),true);
     }
 
-    /**
-     * @return string
-     */
-    public static function getTable(): string
+    public static function insertKids(string $nom, string $prenom, $dateNaissance, int $allergieBool, string $allergie,
+                                      int
+    $pathologieBool,
+                              string $pathologie, string $directives, int $idUser): void
     {
-        return self::$table;
-    }
-
-    /**
-     * @param string $table
-     */
-    public static function setTable(string $table): void
-    {
-        self::$table = $table;
+        $sql = "INSERT INTO " . self::getTable() . " VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        App::getDatabase()->prepareInsert($sql, [$nom, $prenom, $dateNaissance, $allergieBool, $allergie, $pathologieBool,
+            $pathologie, $directives, $idUser]);
     }
 
     /**
@@ -98,19 +92,19 @@ LEFT JOIN table2 ON table1.id = table2.fk_id */
     }
 
     /**
-     * @return int
+     * @return mixed
      */
-    public function getAge(): int
+    public function getDateNaissance()
     {
-        return $this->age;
+        return $this->dateNaissance;
     }
 
     /**
-     * @param int $age
+     * @param mixed $dateNaissance
      */
-    public function setAge(int $age): void
+    public function setDateNaissance($dateNaissance): void
     {
-        $this->age = $age;
+        $this->dateNaissance = $dateNaissance;
     }
 
     /**
@@ -192,6 +186,8 @@ LEFT JOIN table2 ON table1.id = table2.fk_id */
     {
         $this->directives = $directives;
     }
+
+
 
 
 }

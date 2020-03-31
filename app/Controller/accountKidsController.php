@@ -15,7 +15,7 @@ class accountKidsController extends UserController
     {
         $message = 'Mes enfants';
 
-        $kids = KidsModel::findKidsByUser($_SESSION['id']);
+        $kids = KidsModel::findAllKidsByUser($_SESSION['id']);
 
         Tools::debug($kids);
 
@@ -28,22 +28,27 @@ class accountKidsController extends UserController
 
         $errors = array();
         $form = new Form($errors, 'post');
+        $idUser = $_SESSION['id'];
         if (isset($_POST['submitted'])) {
             $post = $this->cleanXss($_POST);
             $validation = new Validation();
             $errors['nom'] = $validation->textValid($post['nom'], 'nom', 2, 50);
             $errors['prenom'] = $validation->textValid($post['prenom'], 'prenom', 2, 50);
-            $errors['mail'] = $validation->emailValid($post['mail']);
-            $errors['password'] = $validation->textValid($post['password'], 'password', 2, 50);
-            $errors['cfrm'] = $validation->generateErrorRepeat($post['password'], $post['cfrm'], 'Les mots de passe ne correspondent pas');
-            $errors['cgu'] = $validation->generateErrorCheckBox($post['cgu'], 'Veuillez accepter les conditions d\'utilisation.');
+
+            if ($post['allergies+'] == '') {
+                $post['allergies'] = 0;
+            }
+            if ($post['pathologie+'] == '') {
+                $post['pathologie'] = 0;
+            }
 
             if ($validation->IsValid($errors) == true) {
-                $hash = password_hash($post['password'], PASSWORD_DEFAULT);
-                KidsModel::insertKids($post['nom'], $post['prenom'], $post['mail'], $hash);
+                KidsModel::insertKids($post['nom'], $post['prenom'], $post['dateNaissance'], $post['allergies'],
+                    $post['allergies+'],
+                    $post['pathologie'], $post['pathologie+'], $post['directives'], $idUser);
             }
         }
 
-        $this->render('app.user.registerKids', compact('message'));
+        $this->render('app.user.registerKids', compact('message', 'form', 'errors'));
     }
 }

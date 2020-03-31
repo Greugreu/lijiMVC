@@ -16,16 +16,26 @@
     <tr>
         <th>Nom</th>
         <th>Prénom</th>
-        <th>Age</th>
+        <th>Date de naissance</th>
+        <?php if ($kids->allergies == 1) { ?> <th> Allergies </th> <?php } ?>
+        <?php if ($kids->handicap == 1) { ?> <th> Pathologies </th> <?php } ?>
+        <th>Directives</th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td><?php echo ucfirst($kids->nom); ?></td>
-        <td><?php echo ucfirst($kids->prenom); ?></td>
-        <td><?php echo $kids->age ?></td>
-    </tr>
+    <?php
+    foreach ($kids as $kid)
+    { ?>
+        <tr>
+            <td> <?php echo ucfirst($kids->nom); ?> </td>
+            <td> <?php echo ucfirst($kids->prenom); ?> </td>
+            <td> <?php echo $kids->dateNaissance ?> </td>
+            <?php if ($kids->allergies == 1) { ?> <td> <?php echo $kids->allergiesPlus ?> </td> <?php } ?>
+            <?php if ($kids->handicap == 1) { ?> <td> <?php echo $kids->handicapPlus ?> </td> <?php } ?>
+            <td> <?php echo $kids->directives ?> </td>
+        </tr>
+    <?php }
+    ?>
     </tbody>
 </table>
-
 
