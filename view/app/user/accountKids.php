@@ -17,8 +17,8 @@
         <th>Nom</th>
         <th>Prénom</th>
         <th>Date de naissance</th>
-        <?php if ($kids->allergies == 1) { ?> <th> Allergies </th> <?php } ?>
-        <?php if ($kids->handicap == 1) { ?> <th> Pathologies </th> <?php } ?>
+        <?php if ($kids[0]->allergies == 1) { ?> <th> Allergies </th> <?php } ?>
+        <?php if ($kids[0]->handicap == 1) { ?> <th> Pathologies </th> <?php } ?>
         <th>Directives</th>
     </tr>
     </thead>
@@ -27,12 +27,12 @@
     foreach ($kids as $kid)
     { ?>
         <tr>
-            <td> <?php echo ucfirst($kids->nom); ?> </td>
-            <td> <?php echo ucfirst($kids->prenom); ?> </td>
-            <td> <?php echo $kids->dateNaissance ?> </td>
-            <?php if ($kids->allergies == 1) { ?> <td> <?php echo $kids->allergiesPlus ?> </td> <?php } ?>
-            <?php if ($kids->handicap == 1) { ?> <td> <?php echo $kids->handicapPlus ?> </td> <?php } ?>
-            <td> <?php echo $kids->directives ?> </td>
+            <td> <?php echo ucfirst($kid->nom); ?> </td>
+            <td> <?php echo ucfirst($kid->prenom); ?> </td>
+            <td> <?php echo $kid->dateNaissance ?> </td>
+            <?php if ($kid->allergies == 1) { ?> <td> <?php echo $kid->allergiesPlus ?> </td> <?php } ?>
+            <?php if ($kid->handicap == 1) { ?> <td> <?php echo $kid->handicapPlus ?> </td> <?php } ?>
+            <td> <?php echo $kid->directives ?> </td>
         </tr>
     <?php }
     ?>

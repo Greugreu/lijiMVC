@@ -30,7 +30,7 @@ LEFT JOIN table2 ON table1.id = table2.fk_id */
     public static function findAllKidsByUser($id)
     {
         $sql = "SELECT * FROM " . self::getTable() . " WHERE users_idUsers= ?";
-        return App::getDatabase()->prepare($sql, [$id], get_called_class(),true);
+        return App::getDatabase()->prepare($sql, [$id], get_called_class(),false);
     }
 
     public static function insertKids(string $nom, string $prenom, $dateNaissance, int $allergieBool, string $allergie,
