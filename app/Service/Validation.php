@@ -80,4 +80,15 @@ class Validation
             return $text;
         }
     }
+
+    public function telValid($int, $title)
+    {
+        $error = '';
+        if (!empty($int)) {
+            if(!preg_match("#[0][1-9][- \.?]?([0-9][0-9][- \.?]?){4}$#", $int)) {
+                $error = 'Veuillez entrer un numéro de téléphone correct';
+            }
+        }
+        return $error;
+    }
 }

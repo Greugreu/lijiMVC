@@ -113,7 +113,7 @@ class DefaultController extends Controller
             $post = $this->cleanXss($_POST);
             $validation = new Validation();
             $errors['nom'] = $validation->textValid($post['nom'], 'nom', 2, 50);
-            $errors['nom'] = $validation->textValid($post['prenom'], 'prenom', 2, 50);
+            $errors['prenom'] = $validation->textValid($post['prenom'], 'prenom', 2, 50);
             $errors['mail'] = $validation->emailValid($post['mail']);
             $errors['password'] = $validation->textValid($post['password'], 'password', 2, 50);
             $errors['cfrm'] = $validation->generateErrorRepeat($post['password'], $post['cfrm'], 'Les mots de passe ne correspondent pas');

@@ -6,6 +6,7 @@
     <nav>
         <ul>
             <li><a href="<?= $view->path('accountKids') ?>">Mes enfants</a></li>
+            <li><a href="<?= $view->path('infos') ?>">Compléter mes informations</a></li>
         </ul>
     </nav>
 </div>
