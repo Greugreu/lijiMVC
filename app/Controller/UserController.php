@@ -31,24 +31,36 @@ class UserController extends Controller
     public function infos()
     {
         $message = 'Informations personnelles';
-
+        $idUser = $_SESSION['id'];
         $errors = array();
         $form = new Form($errors, 'post');
         if (isset($_POST['submitted'])) {
             $post = $this->cleanXss($_POST);
             $validation = new Validation();
             $errors['nom'] = $validation->textValid($post['nom'], 'nom', 2, 50);
+            $errors['nomC'] = $validation->textValid($post['nomC'], 'nom', 2, 50);
             $errors['prenom'] = $validation->textValid($post['prenom'], 'prenom', 2, 50);
+            $errors['prenomC'] = $validation->textValid($post['prenomC'], 'prenom', 2, 50);
             $errors['tel'] = $validation->telValid($post['tel'], 'telephone');
+            $errors['telC'] = $validation->telValid($post['telC'], 'telephone');
             $errors['mail'] = $validation->emailValid($post['mail']);
 
+            if (empty($post['adresseConjoin'])) {
+                $post['adresseC'] = $post['adresse'];
+            }
+            if (empty($post['telC'])) {
+                $post['telC'] = $post['tel'];
+            }
+            var_dump($post);
             if ($validation->IsValid($errors) == true) {
-                $hash = password_hash($post['password'], PASSWORD_DEFAULT);
-                UserModel::insertUser($post['nom'], $post['prenom'], $post['mail'], $hash);
+                UserModel::update($post['nom'],$post['prenom'],$post['adresse'],
+                    $post['region'], $post['job'], $post['lieuJob'], $post['telJob'], $post['tel'], $post['mail'],
+                    $post['nomC'], $post['prenomC'], $post['adresseC'], $post['telC'], $post['mobileC'],
+                    $post['jobC'], $post['lieuJobC'], $idUser);
             }
         }
 
-        $this->render('app.user.infos', compact('message'));
+        $this->render('app.user.infos', compact('message', 'form'));
     }
 
 

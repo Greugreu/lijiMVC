@@ -36,22 +36,32 @@ class UserModel extends Model
     public static function insertUser(string $nom, string $prenom, string $mail, string $password): void
     {
         $token = Tools::generateToken(255);
-        $sql = "INSERT INTO " . self::getTable() . " VALUES(NULL,?,?,NULL,NULL,NULL,NULL,NULL,NULL,?,NULL,NULL,NULL,NULL,NULL,NULL,NULL,?,?,1,NOW(),NULL)";
+        $sql = "INSERT INTO " . self::getTable() .
+               " VALUES(NULL,?,?,NULL,NULL,NULL,NULL,NULL,NULL,?,NULL,NULL,NULL,NULL,NULL,NULL,NULL,?,?,1,NOW(),NULL)";
         App::getDatabase()->prepareInsert($sql, [$nom, $prenom, $mail, $password, $token]);
     }
 
     public static function findUserByMail(string $email)
     {
-        $sql = "SELECT * FROM " . self::getTable() . " WHERE mail= ?";
+        $sql = "SELECT * FROM " . self::getTable() .
+               " WHERE mail= ?";
         return App::getDatabase()->prepare($sql, [$email], get_called_class(),true);
     }
 
-    public static function update($id,$post): void
+    public static function update($id, $nom, $prenom, $adresse, $region, $job, $lieuJob, $telJob, $telephone, $mail,
+                                  $nomConjoin, $prenomConjoin, $adresseConjoin, $telephoneConjoin, $mobileConjoin,
+                                  $jobConjoin, $lieuConjoin):
+    void
     {
-        $sql = "UPDATE ". self::getTable() ." SET email = ?,nom = ?,fruit_id = ?, modified_at = NOW() WHERE id = ?";
-        App::getDatabase()->prepareInsert($sql,[$post['name'],$post['firstname'],$post['mail'],
-            $post['password'], $post['created_at'], $post['modified_at'], $post['roles'], $post['token']]);
+        $sql = $sql = "UPDATE " . self::getTable() . " SET nom = ?,prenom = ?,adresse = ?,region = ?,job = ?,lieuJob = ?,
+        telJob = ?,telephone = ?,mail = ?,nomConjoin = ?,prenomConjoin = ?,adresseConjoin = ?,telephoneConjoin = ?,
+        mobileConjoin = ?,jobConjoin = ?,lieuConjoin = ?,modifiedAt = NOW() WHERE idUsers = ?";
+        App::getDatabase()->prepareInsert($sql,[$nom, $prenom, $adresse, $region, $job, $lieuJob, $telJob, $telephone, $mail,
+            $nomConjoin, $prenomConjoin, $adresseConjoin, $telephoneConjoin, $mobileConjoin,
+            $jobConjoin, $lieuConjoin, $id]);
     }
+
+
 
     public static function findUsersById($id,$columId = 'idUsers')
     {
