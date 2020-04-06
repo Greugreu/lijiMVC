@@ -17,11 +17,4 @@
     <button class="btn-primary">+ d'infos</button>
 </div>
 <p>Des professionnels près de chez vous</p>
-<div id='map' style='width: 400px; height: 300px;'></div>
-<script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JldWdyZXUiLCJhIjoiY2s4Zm92bWNyMDJqODNlbXB5OTN1dHZ3MCJ9.kW-zI5MDfeGM1Bffs1JuiA';
-    var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11'
-    });
-</script>
+<div id='map' style='width: 800px; height: 600px;'></div>
