@@ -14,6 +14,7 @@ class UserModel extends Model
     private $nom;
     private $prenom;
     private $adresse;
+    private $region;
     private $job;
     private $lieuJob;
     private $telJob;
@@ -24,7 +25,7 @@ class UserModel extends Model
     private $adresseConjoin;
     private $telephoneConjoin;
     private $mobileConjoin;
-    private $jonCoinjoin;
+    private $jobCoinjoin;
     private $lieuConjoin;
     private $password;
     private $token;
@@ -63,7 +64,7 @@ class UserModel extends Model
 
 
 
-    public static function findUsersById($id,$columId = 'idUsers')
+    public function findUsersById($id,$columId = 'idUsers')
     {
         return App::getDatabase()->prepare("SELECT * FROM " . self::getTable() . " WHERE ".$columId." = ?",[$id],get_called_class(),true);
     }
@@ -71,17 +72,19 @@ class UserModel extends Model
     /**
      * @return mixed
      */
-    public function getId()
+    public function getIdUsers()
     {
         return $this->idUsers;
     }
 
     /**
      * @param mixed $idUsers
+     * @return UserModel
      */
-    public function setId($idUsers): void
+    public function setIdUsers($idUsers)
     {
         $this->idUsers = $idUsers;
+        return $this;
     }
 
     /**
@@ -94,10 +97,12 @@ class UserModel extends Model
 
     /**
      * @param mixed $nom
+     * @return UserModel
      */
-    public function setNom($nom): void
+    public function setNom($nom)
     {
         $this->nom = $nom;
+        return $this;
     }
 
     /**
@@ -110,10 +115,12 @@ class UserModel extends Model
 
     /**
      * @param mixed $prenom
+     * @return UserModel
      */
-    public function setPrenom($prenom): void
+    public function setPrenom($prenom)
     {
         $this->prenom = $prenom;
+        return $this;
     }
 
     /**
@@ -126,10 +133,30 @@ class UserModel extends Model
 
     /**
      * @param mixed $adresse
+     * @return UserModel
      */
-    public function setAdresse($adresse): void
+    public function setAdresse($adresse)
     {
         $this->adresse = $adresse;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRegion()
+    {
+        return $this->region;
+    }
+
+    /**
+     * @param mixed $region
+     * @return UserModel
+     */
+    public function setRegion($region)
+    {
+        $this->region = $region;
+        return $this;
     }
 
     /**
@@ -142,10 +169,12 @@ class UserModel extends Model
 
     /**
      * @param mixed $job
+     * @return UserModel
      */
-    public function setJob($job): void
+    public function setJob($job)
     {
         $this->job = $job;
+        return $this;
     }
 
     /**
@@ -158,10 +187,12 @@ class UserModel extends Model
 
     /**
      * @param mixed $lieuJob
+     * @return UserModel
      */
-    public function setLieuJob($lieuJob): void
+    public function setLieuJob($lieuJob)
     {
         $this->lieuJob = $lieuJob;
+        return $this;
     }
 
     /**
@@ -174,10 +205,12 @@ class UserModel extends Model
 
     /**
      * @param mixed $telJob
+     * @return UserModel
      */
-    public function setTelJob($telJob): void
+    public function setTelJob($telJob)
     {
         $this->telJob = $telJob;
+        return $this;
     }
 
     /**
@@ -190,10 +223,12 @@ class UserModel extends Model
 
     /**
      * @param mixed $telephone
+     * @return UserModel
      */
-    public function setTelephone($telephone): void
+    public function setTelephone($telephone)
     {
         $this->telephone = $telephone;
+        return $this;
     }
 
     /**
@@ -204,17 +239,14 @@ class UserModel extends Model
         return $this->mail;
     }
 
-    public function getEmail()
-    {
-        return $this->mail;
-    }
-
     /**
      * @param mixed $mail
+     * @return UserModel
      */
-    public function setMail($mail): void
+    public function setMail($mail)
     {
         $this->mail = $mail;
+        return $this;
     }
 
     /**
@@ -227,10 +259,12 @@ class UserModel extends Model
 
     /**
      * @param mixed $nomConjoin
+     * @return UserModel
      */
-    public function setNomConjoin($nomConjoin): void
+    public function setNomConjoin($nomConjoin)
     {
         $this->nomConjoin = $nomConjoin;
+        return $this;
     }
 
     /**
@@ -243,10 +277,12 @@ class UserModel extends Model
 
     /**
      * @param mixed $prenomConjoin
+     * @return UserModel
      */
-    public function setPrenomConjoin($prenomConjoin): void
+    public function setPrenomConjoin($prenomConjoin)
     {
         $this->prenomConjoin = $prenomConjoin;
+        return $this;
     }
 
     /**
@@ -259,10 +295,12 @@ class UserModel extends Model
 
     /**
      * @param mixed $adresseConjoin
+     * @return UserModel
      */
-    public function setAdresseConjoin($adresseConjoin): void
+    public function setAdresseConjoin($adresseConjoin)
     {
         $this->adresseConjoin = $adresseConjoin;
+        return $this;
     }
 
     /**
@@ -275,10 +313,12 @@ class UserModel extends Model
 
     /**
      * @param mixed $telephoneConjoin
+     * @return UserModel
      */
-    public function setTelephoneConjoin($telephoneConjoin): void
+    public function setTelephoneConjoin($telephoneConjoin)
     {
         $this->telephoneConjoin = $telephoneConjoin;
+        return $this;
     }
 
     /**
@@ -291,26 +331,30 @@ class UserModel extends Model
 
     /**
      * @param mixed $mobileConjoin
+     * @return UserModel
      */
-    public function setMobileConjoin($mobileConjoin): void
+    public function setMobileConjoin($mobileConjoin)
     {
         $this->mobileConjoin = $mobileConjoin;
+        return $this;
     }
 
     /**
      * @return mixed
      */
-    public function getJonCoinjoin()
+    public function getJobCoinjoin()
     {
-        return $this->jonCoinjoin;
+        return $this->jobCoinjoin;
     }
 
     /**
-     * @param mixed $jonCoinjoin
+     * @param mixed $jobCoinjoin
+     * @return UserModel
      */
-    public function setJonCoinjoin($jonCoinjoin): void
+    public function setJobCoinjoin($jobCoinjoin)
     {
-        $this->jonCoinjoin = $jonCoinjoin;
+        $this->jobCoinjoin = $jobCoinjoin;
+        return $this;
     }
 
     /**
@@ -323,10 +367,12 @@ class UserModel extends Model
 
     /**
      * @param mixed $lieuConjoin
+     * @return UserModel
      */
-    public function setLieuConjoin($lieuConjoin): void
+    public function setLieuConjoin($lieuConjoin)
     {
         $this->lieuConjoin = $lieuConjoin;
+        return $this;
     }
 
     /**
@@ -339,10 +385,12 @@ class UserModel extends Model
 
     /**
      * @param mixed $password
+     * @return UserModel
      */
-    public function setPassword($password): void
+    public function setPassword($password)
     {
         $this->password = $password;
+        return $this;
     }
 
     /**
@@ -355,10 +403,12 @@ class UserModel extends Model
 
     /**
      * @param mixed $token
+     * @return UserModel
      */
-    public function setToken($token): void
+    public function setToken($token)
     {
         $this->token = $token;
+        return $this;
     }
 
     /**
@@ -371,10 +421,12 @@ class UserModel extends Model
 
     /**
      * @param mixed $role
+     * @return UserModel
      */
-    public function setRole($role): void
+    public function setRole($role)
     {
         $this->role = $role;
+        return $this;
     }
 
     /**
@@ -387,10 +439,12 @@ class UserModel extends Model
 
     /**
      * @param mixed $createdAt
+     * @return UserModel
      */
-    public function setCreatedAt($createdAt): void
+    public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
+        return $this;
     }
 
     /**
@@ -403,10 +457,13 @@ class UserModel extends Model
 
     /**
      * @param mixed $modifiedAt
+     * @return UserModel
      */
-    public function setModifiedAt($modifiedAt): void
+    public function setModifiedAt($modifiedAt)
     {
         $this->modifiedAt = $modifiedAt;
+        return $this;
     }
+
 
 }

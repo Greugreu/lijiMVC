@@ -18,18 +18,18 @@ $validation = new \App\Service\Validation();
             <img src="asset/img/logo.png" class="logo" alt="" >
             <nav class="home-nav">
                 <ul>
-                    <li><a href="<?= $view->path('home'); ?>">Home</a></li>
                     <li><a href="<?= $view->path('contact'); ?>">Contact</a></li>
                     <?php if ($validation->isLogged() == true) { ?>
-                        <li><a href="<?= $view->path('account') ?>">Mon Compte</a></li>
                         <li><a href="<?= $view->path('logout') ?>">Déconnexion</a></li>
+                        <li><a href="<?= $view->path('account') ?>">Mon Compte</a></li>
                     <?php } else { ?>
                         <li><a href="<?= $view->path('login'); ?>">Connexion</a></li>
                         <li><a href="<?= $view->path('register'); ?>">Inscritpion</a></li>
                     <?php } ?>
-                    <li><a href="<?= $view->path('single',array(12)); ?>">Single</a></li>
-                    <li><a href="<?= $view->path('single2',array(12,'dedede')); ?>">Single2</a></li>
-                </ul>
+                    <li><a href="<?= $view->path('home'); ?>">Home</a></li>
+                    <!--                    <li><a href="<?/*= $view->path('single',array(12)); */?>">Single</a></li>
+                                        <li><a href="<?/*= $view->path('single2',array(12,'dedede')); */?>">Single2</a></li>
+                    -->                </ul>
             </nav>
         </header>
         <div class="clear"></div>

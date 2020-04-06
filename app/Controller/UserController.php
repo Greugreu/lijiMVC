@@ -22,8 +22,8 @@ class UserController extends Controller
     public function account()
     {
         $message = 'Mon compte';
-
-        $user = UserModel::findUsersById($_SESSION['id']);
+        $UM = new UserModel();
+        $user = $UM->findUsersById($_SESSION['id']);
 
         $this->render('app.user.account', compact('message','user'));
     }
@@ -40,7 +40,7 @@ class UserController extends Controller
             $errors['nom'] = $validation->textValid($post['nom'], 'nom', 2, 50);
             $errors['nomC'] = $validation->textValid($post['nomC'], 'nom', 2, 50);
             $errors['prenom'] = $validation->textValid($post['prenom'], 'prenom', 2, 50);
-            $errors['prenomC'] = $validation->textValid($post['prenomC'], 'prenom', 2, 50);
+            $errors['prenomC'] = $validation->textValid($post['prenomC'], 'prenomC', 2, 50);
             $errors['tel'] = $validation->telValid($post['tel'], 'telephone');
             $errors['telC'] = $validation->telValid($post['telC'], 'telephone');
             $errors['mail'] = $validation->emailValid($post['mail']);
