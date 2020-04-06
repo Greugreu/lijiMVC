@@ -2,7 +2,7 @@
     <?= $message; ?>
 </h1>
 
-<div class="banner">
+<!--<div class="banner">
     <img src="asset/img/banner.jpg" height="300px" width="600px" alt="" class="banner-img">
 </div>
 <div class="search">
@@ -15,6 +15,5 @@
     <a href="#"><i class="fa fa-dot-circle-o"></i></a>
     <p>Je propose de garder</p>
     <button class="btn-primary">+ d'infos</button>
-</div>
+</div>-->
 <p>Des professionnels près de chez vous</p>
-<div id='map' style='width: 800px; height: 600px;'></div>

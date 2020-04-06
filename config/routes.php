@@ -12,6 +12,7 @@ $routes = array(
     array('forgot', 'default', 'forgot'),
     array('changePassword', 'default', 'changePassword',array('token')),
     array('logout', 'default', 'logout'),
+    array('map', 'map', 'index'),
 
     // user routes
     array('account', 'user', 'account'),
