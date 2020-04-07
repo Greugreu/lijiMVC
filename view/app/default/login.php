@@ -3,10 +3,10 @@
 </h1>
 
 <?php
-use App\Service\Tools;
-
-Tools::debug($_SESSION);
-?>
+//use App\Service\Tools;
+//
+////Tools::debug($_SESSION);
+//?>
 
 <form action="#" method="post">
     <div class="loginMail">
