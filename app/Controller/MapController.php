@@ -13,8 +13,8 @@ class MapController extends Controller
     {
         $MapModel = new MapModel();
         $content = $MapModel->findAllPros();
-        json_encode($content);
+        $jsonContent = json_encode($content);
 
-        $this->render('app.default.map');
+        $this->render('app.default.map', compact('jsonContent'));
     }
 }

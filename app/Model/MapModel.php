@@ -12,6 +12,6 @@ class MapModel extends Model
     {
         $sql = "SELECT idpro, nomEntreprise, adresse, mail, telephone, note, places
                 FROM pro";
-        return App::getDatabase()->prepare($sql, get_called_class(),false);
+        return App::getDatabase()->query($sql, get_called_class());
     }
 }

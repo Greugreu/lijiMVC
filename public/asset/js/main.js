@@ -15,18 +15,15 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JldWdyZXUiLCJhIjoiY2s4Zm92bWNyMDJqODNlbXB5O
 
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/light-v10',
+    style: 'mapbox://styles/mapbox/streets-v11',
     center: [1.1, 49.5],
     zoom: 9
 });
 
 // import stores data
-function getStoresList(str) {
+function getStoresList() {
     var xhttp;
-    if (str == "") {
-        document.getElementById("txtHint").innerHTML = "";
-        return;
-    }
+
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
