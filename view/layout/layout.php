@@ -89,7 +89,7 @@ $validation = new \App\Service\Validation();
                         <a href="#"><i class="fa fa-facebook"></i></a>
                         <a href="#"><i class="fa fa-twitter"></i></a>
                         <a href="#"><i class="fa fa-linkedin"></i></a>
-                        <a href="#"><i class="fa fa-google"></i></a>
+                        <a href="#"><i class="fa fa-googl"></i></a>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12 segment-four sm-mb-30">
                         <h2>Contact</h2>
