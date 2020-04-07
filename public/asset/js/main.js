@@ -33,7 +33,7 @@ function getStoresList(str) {
             document.getElementById("txtHint").innerHTML = this.responseText;
         }
     };
-    xhttp.open("GET", "getstores.php?q="+str, true);
+    xhttp.open("GET", "getstores.php", true);
     xhttp.send();
 }
 
