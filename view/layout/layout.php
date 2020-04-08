@@ -30,6 +30,7 @@ $validation = new \App\Service\Validation();
                         <li><a href="<?= $view->path('register'); ?>">Inscritpion</a></li>
                     <?php } ?>
                     <li><a href="<?= $view->path('home'); ?>">Home</a></li>
+                    <li><a href="<?= $view->path('proHome'); ?>">Pro</a></li>
                     <!--                    <li><a href="<?/*= $view->path('single',array(12)); */?>">Single</a></li>
                                         <li><a href="<?/*= $view->path('single2',array(12,'dedede')); */?>">Single2</a></li>
                     -->                </ul>
