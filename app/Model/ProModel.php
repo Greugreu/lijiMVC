@@ -22,6 +22,7 @@ class ProModel
     private $siret;
     private $tarif;
     private $note;
+    private $password;
     private $token;
     private $createdAt;
     private $modifiedAt;
@@ -294,6 +295,24 @@ class ProModel
     public function setNote($note)
     {
         $this->note = $note;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param mixed $password
+     * @return ProModel
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
         return $this;
     }
 

@@ -15,6 +15,8 @@
     <input type="text" id="note" name="note" placeholder="note">
     <input type="text" id="places" name="places" placeholder="places">
 
+    <input type="submit" name="submitted" value="Envoyer">
+
 </form>
 <input type="text" id="longitude" name="nom" placeholder="Nom">
 <input type="text" id="latitude" name="nom" placeholder="Nom">
