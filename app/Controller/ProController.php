@@ -42,6 +42,8 @@ class ProController extends Controller
             $errors['password'] = $validation->textValid($post['password'], 'password', 2, 50);
             $errors['cfrm'] = $validation->generateErrorRepeat($post['password'], $post['cfrm'], 'Les mots de passe ne correspondent pas');
 
+
+
             if ($validation->IsValid($errors) == true) {
                 $hash = password_hash($post['password'], PASSWORD_DEFAULT);
                 ProModel::insertUser($post['nom'], $post['prenom'],$post['nomEntreprise'],$post['adresse'],$post['postal'],

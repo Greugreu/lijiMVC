@@ -17,4 +17,6 @@ class MapController extends Controller
 
         $this->render('app.default.map', compact('jsonContent'));
     }
+
+
 }

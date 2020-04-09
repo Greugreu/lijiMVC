@@ -20,9 +20,6 @@ $routes = array(
     array('registerKids', 'accountKids', 'registerKid'),
     array('infos', 'user', 'infos'),
 
-    // pro route
-    array('proHome', 'pro', 'index'),
-    array('proRegister', 'pro', 'register'),
 );
 
 

@@ -30,7 +30,7 @@ $validation = new \App\Service\Validation();
                         <li><a href="<?= $view->path('register'); ?>">Inscritpion</a></li>
                     <?php } ?>
                     <li><a href="<?= $view->path('home'); ?>">Home</a></li>
-                    <li><a href="<?= $view->path('proHome'); ?>">Pro</a></li>
+                    <li><a href="http://localhost/WPliji/" target="_blank">Espace Pro</a></li>
                     <!--                    <li><a href="<?/*= $view->path('single',array(12)); */?>">Single</a></li>
                                         <li><a href="<?/*= $view->path('single2',array(12,'dedede')); */?>">Single2</a></li>
                     -->                </ul>
@@ -49,10 +49,7 @@ $validation = new \App\Service\Validation();
                 </ul>
             </nav>
         </footer>
-        <script
-                src="https://code.jquery.com/jquery-3.4.1.js"
-                integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-                crossorigin="anonymous"></script>
+        <script src="<?= $view->asset('vendor/jquery-3.4.1.min.js') ?>"></script>
         <script src="<?= $view->asset('js/main.js'); ?>"></script>
     </div>
   </body>

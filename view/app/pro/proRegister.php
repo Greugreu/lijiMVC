@@ -1,6 +1,6 @@
 <h2><?= $message ?></h2>
 
-<form action="#" method="post" class="form-control">
+<form action="#" method="post" id="pro" name="pro" class="form-control">
     <input type="text" id="nom" name="nom" placeholder="Nom">
     <input type="text" id="prenom" name="prenom" placeholder="Prenom">
     <input type="text" id="nomEntreprise" name="nomEntreprise" placeholder="nomEntreprise">
@@ -17,9 +17,19 @@
 
     <input type="submit" name="submitted" value="Envoyer">
 
+    <input type="text" id="longitude" name="nom" placeholder="longitude">
+    <input type="text" id="latitude" name="nom" placeholder="latitude">
+
+    <script>
+
+        navigator.geolocation.getCurrentPosition(function (position) {
+            console.log(position.coords.latitude)
+            console.log(position.coords.longitude)
+        })
+    </script>
+
 </form>
-<input type="text" id="longitude" name="nom" placeholder="Nom">
-<input type="text" id="latitude" name="nom" placeholder="Nom">
+
 
 
 <?php
