@@ -1,192 +1,155 @@
-// Older browsers compatibility
-/* This will let you use the .remove() function later on */
-if (!('remove' in Element.prototype)) {
-    Element.prototype.remove = function() {
-        if (this.parentNode) {
-            this.parentNode.removeChild(this);
-        }
-    };
-}
+$(document).ready(function() {
+    // Test for placeholder support
+    $.support.placeholder = (function(){
+        var i = document.createElement('input');
+        return 'placeholder' in i;
+    })();
+
+    // Hide labels by default if placeholders are supported
+    if($.support.placeholder) {
+        $('.form-label').each(function(){
+            $(this).addClass('js-hide-label');
+        });
+
+        // Code for adding/removing classes here
+        $('.form-group').find('input, textarea').on('keyup blur focus', function(e){
+
+            // Cache our selectors
+            var $this = $(this),
+                $label = $this.parent().find("label");
+
+            switch(e.type) {
+                case 'keyup': {
+                    $label.toggleClass('js-hide-label', $this.val() == '');
+                } break;
+                case 'blur': {
+                    if( $this.val() == '' ) {
+                        $label.addClass('js-hide-label');
+                    } else {
+                        $label.removeClass('js-hide-label').addClass('js-unhighlight-label');
+                    }
+                } break;
+                case 'focus': {
+                    if( $this.val() !== '' ) {
+                        $label.removeClass('js-unhighlight-label');
+                    }
+                } break;
+                default: break;
+            }
+            // previous implementation with ifs
+            /*if (e.type == 'keyup') {
+                if( $this.val() == '' ) {
+                    $parent.addClass('js-hide-label');
+                } else {
+                    $parent.removeClass('js-hide-label');
+                }
+            }
+            else if (e.type == 'blur') {
+                if( $this.val() == '' ) {
+                    $parent.addClass('js-hide-label');
+                }
+                else {
+                    $parent.removeClass('js-hide-label').addClass('js-unhighlight-label');
+                }
+            }
+            else if (e.type == 'focus') {
+                if( $this.val() !== '' ) {
+                    $parent.removeClass('js-unhighlight-label');
+                }
+            }*/
+        });
+    }
+});
+
+$.ajax({
+
+    // Adresse à laquelle la requête est envoyée
+    url: '',
+    type: 'GET',
+    // La fonction à apeller si la requête aboutie
+
+    success: function (jsonContent) {
+        var users = jQuery.parseJSON(jsonContent);
+        console.log(users);
+
+        map.on('load', function () {
+            var geojson = {
+                type: 'FeatureCollection',
+                features: [{
+                    type: 'Feature',
+                    geometry: {
+                        type: 'Point',
+                        coordinates: [1.101775, 49.438669]
+                    },
+                    properties: {
+                        title: 'Campus Saint Marc',
+                        description: 'WEBAPSY'
+                    }
+                },/*If need one more put it here*/]
+            };
+            var i;
+            for(i=0;i<users.length;i++) {
+                geojson.features.push({
+                    type: 'Feature',
+                    geometry: {
+                        type: 'Point',
+                        coordinates: [users[i]['longitude'], users[i]['latitude']]
+                    },
+                    properties: {
+                        title: users[i]['nom_creche'],
+                        description: '<p>Téléphone : 0' + users[i]['telephone_creche']+ '</p>' + '<p>Mail : ' + users[i]['email'] + '</p>' + '<p>' + users[i]['num_rue'] + ' ' + users[i]['nom_rue'] + '</p>' + '<p>' + users[i]['codepostal'] + ' ' + users[i]['ville'] + '</p>'
+                    }
+                });
+            }
+
+            // add markers to map
+            geojson.features.forEach(function (marker) {
+
+                //Instantiation de l'image du pointeur également à gérer sur le style (mapbox.css)
+                // create a HTML element for each feature
+                var el = document.createElement('div');
+                el.className = 'marker';
 
 
-// Generate MAP
+                // make a marker for each feature and add to the map
+                new mapboxgl.Marker(el)
+                    .setLngLat(marker.geometry.coordinates)
+                    .addTo(map)
+                    .setPopup(new mapboxgl.Popup({offset: 25}) // add popups
+                        .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
+                    .addTo(map);
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JldWdyZXUiLCJhIjoiY2s4Zm92bWNyMDJqODNlbXB5OTN1dHZ3MCJ9.kW-zI5MDfeGM1Bffs1JuiA';
+            });
+
+            var geocoder = new MapboxGeocoder({
+                accessToken: mapboxgl.accessToken,
+                mapboxgl: mapboxgl
+            });
+
+            var gelocalisation = new mapboxgl.GeolocateControl({positionOptions: {enableHighAccuracy: true}, trackUserLocation: true});
+
+            map.addControl(gelocalisation, 'top-right');
+
+            map.addControl(geocoder, 'top-left');
+
+        });
+    },
+// La fonction à appeler si la requête n'a pas abouti
+    error: function () {
+        // J'affiche un message d'erreur
+
+    }
+
+})
+;
+
+// Map Box
+
+mapboxgl.accessToken = 'pk.eyJ1Ijoid2ViYXBzeSIsImEiOiJjazhlYXk1ejkxNGFpM2dsdjJkaDd2b2RmIn0.pWabX6z0Us-G8OiF9DhuNA';
 
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v11',
-    center: [1.1, 49.5],
-    zoom: 9
+    style: 'mapbox://styleivals/mapbox/streets-v11',
+    center: [1.098696, 49.4379469],
+    zoom: 12,
 });
-
-// import stores data
-function getStoresList() {
-    var xhttp;
-
-    xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("txtHint").innerHTML = this.responseText;
-        }
-    };
-    xhttp.open("GET", "getstores.php", true);
-    xhttp.send();
-}
-
-/**
- * Assign a unique id to each store. You'll use this `id`
- * later to associate each point on the map with a listing
- * in the sidebar.
- */
-stores.features.forEach(function(store, i){
-    store.properties.id = i;
-});
-
-/**
- * Wait until the map loads to make changes to the map.
- */
-map.on('load', function (e) {
-    /**
-     * This is where your '.addLayer()' used to be, instead
-     * add only the source without styling a layer
-     */
-    map.addSource("places", {
-        "type": "geojson",
-        "data": stores
-    });
-
-    /**
-     * Add all the things to the page:
-     * - The location listings on the side of the page
-     * - The markers onto the map
-     */
-    buildLocationList(stores);
-    addMarkers();
-});
-
-/**
- * Add a marker to the map for every store listing.
- **/
-function addMarkers() {
-    /* For each feature in the GeoJSON object above: */
-    stores.features.forEach(function(marker) {
-        /* Create a div element for the marker. */
-        var el = document.createElement('div');
-        /* Assign a unique `id` to the marker. */
-        el.id = "marker-" + marker.properties.id;
-        /* Assign the `marker` class to each marker for styling. */
-        el.className = 'marker';
-
-        /**
-         * Create a marker using the div element
-         * defined above and add it to the map.
-         **/
-        new mapboxgl.Marker(el, { offset: [0, -23] })
-            .setLngLat(marker.geometry.coordinates)
-            .addTo(map);
-
-        /**
-         * Listen to the element and when it is clicked, do three things:
-         * 1. Fly to the point
-         * 2. Close all other popups and display popup for clicked store
-         * 3. Highlight listing in sidebar (and remove highlight for all other listings)
-         **/
-        el.addEventListener('click', function(e){
-            /* Fly to the point */
-            flyToStore(marker);
-            /* Close all other popups and display popup for clicked store */
-            createPopUp(marker);
-            /* Highlight listing in sidebar */
-            var activeItem = document.getElementsByClassName('active');
-            e.stopPropagation();
-            if (activeItem[0]) {
-                activeItem[0].classList.remove('active');
-            }
-            var listing = document.getElementById('listing-' + marker.properties.id);
-            listing.classList.add('active');
-        });
-    });
-}
-
-/**
- * Add a listing for each store to the sidebar.
- **/
-function buildLocationList(data) {
-    data.features.forEach(function(store, i){
-        /**
-         * Create a shortcut for `store.properties`,
-         * which will be used several times below.
-         **/
-        var prop = store.properties;
-
-        /* Add a new listing section to the sidebar. */
-        var listings = document.getElementById('listings');
-        var listing = listings.appendChild(document.createElement('div'));
-        /* Assign a unique `id` to the listing. */
-        listing.id = "listing-" + prop.id;
-        /* Assign the `item` class to each listing for styling. */
-        listing.className = 'item';
-
-        /* Add the link to the individual listing created above. */
-        var link = listing.appendChild(document.createElement('a'));
-        link.href = '#';
-        link.className = 'title';
-        link.id = "link-" + prop.id;
-        link.innerHTML = prop.address;
-
-        /* Add details to the individual listing. */
-        var details = listing.appendChild(document.createElement('div'));
-        details.innerHTML = prop.city;
-        if (prop.phone) {
-            details.innerHTML += ' · ' + prop.phoneFormatted;
-        }
-
-        /**
-         * Listen to the element and when it is clicked, do four things:
-         * 1. Update the `currentFeature` to the store associated with the clicked link
-         * 2. Fly to the point
-         * 3. Close all other popups and display popup for clicked store
-         * 4. Highlight listing in sidebar (and remove highlight for all other listings)
-         **/
-        link.addEventListener('click', function(e){
-            for (var i=0; i < data.features.length; i++) {
-                if (this.id === "link-" + data.features[i].properties.id) {
-                    var clickedListing = data.features[i];
-                    flyToStore(clickedListing);
-                    createPopUp(clickedListing);
-                }
-            }
-            var activeItem = document.getElementsByClassName('active');
-            if (activeItem[0]) {
-                activeItem[0].classList.remove('active');
-            }
-            this.parentNode.classList.add('active');
-        });
-    });
-}
-
-/**
- * Use Mapbox GL JS's `flyTo` to move the camera smoothly
- * a given center point.
- **/
-function flyToStore(currentFeature) {
-    map.flyTo({
-        center: currentFeature.geometry.coordinates,
-        zoom: 15
-    });
-}
-
-/**
- * Create a Mapbox GL JS `Popup`.
- **/
-function createPopUp(currentFeature) {
-    var popUps = document.getElementsByClassName('mapboxgl-popup');
-    if (popUps[0]) popUps[0].remove();
-    var popup = new mapboxgl.Popup({closeOnClick: false})
-        .setLngLat(currentFeature.geometry.coordinates)
-        .setHTML('<h3>Sweetgreen</h3>' +
-            '<h4>' + currentFeature.properties.address + '</h4>')
-        .addTo(map);
-}
-

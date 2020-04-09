@@ -19,6 +19,7 @@ $routes = array(
     array('accountKids','accountKids', 'index'),
     array('registerKids', 'accountKids', 'registerKid'),
     array('infos', 'user', 'infos'),
+
 );
 
 
