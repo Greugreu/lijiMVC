@@ -57,47 +57,101 @@ $user = $userModel->findUsersById($_SESSION['id']);
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-3">
                             <form id="contact-form" class="form" action="#" method="POST" role="form">
                                 <div class="form-group">
-                                    <label class="form-label" for="name">Your Name</label>
+                                    <label class="form-label" for="name">Votre nom</label>
                                     <input type="text"
                                            class="form-control"
-                                           id="name"
-                                           name="name"
-                                           placeholder="Your name"
+                                           id="nom"
+                                           name="nom"
+                                           placeholder="Votre nom"
                                            tabindex="1"
+                                           value="<?= $user->nom ?>"
                                            required>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" for="email">Your Email</label>
-                                    <input type="email"
-                                           class="form-control"
-                                           id="email"
-                                           name="email"
-                                           placeholder="Your Email"
-                                           tabindex="2"
-                                           required>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label" for="subject">Subject</label>
+                                    <label class="form-label" for="prenom">Votre prenom</label>
                                     <input type="text"
                                            class="form-control"
-                                           id="subject"
-                                           name="subject"
-                                           placeholder="Subject"
-                                           tabindex="3">
+                                           id="prenom"
+                                           name="prenom"
+                                           placeholder="Votre prenom"
+                                           tabindex="2"
+                                           value="<?= $user->prenom ?>"
+                                           required>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" for="message">Message</label>
-                                    <textarea rows="5"
-                                              cols="50"
-                                              name="message"
-                                              class="form-control"
-                                              id="message"
-                                              placeholder="Message..."
-                                              tabindex="4"
-                                              required></textarea>
+                                    <label class="form-label" for="adresse">Votre adresse</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           id="adresse"
+                                           name="adresse"
+                                           placeholder="Votre adresse"
+                                           tabindex="3"
+                                           value="<?= $user->adresse ?>"
+                                           required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="region">Région</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           id="region"
+                                           name="region"
+                                           placeholder="Région"
+                                           tabindex="4"
+                                           value="<?= $user->region ?>" >
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="telephone">Numéro de téléphone</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           id="telephone"
+                                           name="telephone"
+                                           placeholder="Numéro de téléphone"
+                                           tabindex="5"
+                                           value="<?= $user->telephone ?>"
+                                           required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="mail">Adresse mail</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           id="mail"
+                                           name="mail"
+                                           placeholder="adresse mail"
+                                           tabindex="6"
+                                           value="<?= $user->mail ?>" >
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="job">Travail</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           id="job"
+                                           name="job"
+                                           placeholder="Travail"
+                                           tabindex="7"
+                                           value="<?= $user->job ?>" >
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="lieuJob">Adresse de travail</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           id="lieuJob"
+                                           name="lieuJob"
+                                           placeholder="Adresse de travail"
+                                           tabindex="8"
+                                           value="<?= $user->lieuJob ?>" >
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="telJob">Téléphone de travail</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           id="telJob"
+                                           name="telJob"
+                                           placeholder="Téléphone de travail"
+                                           tabindex="9"
+                                           value="<?= $user->telJob ?>" >
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-start-order">Send Message</button>
+                                    <button type="submit" class="btn btn-start-order">Envoyer</button>
                                 </div>
                             </form>
                         </div>
