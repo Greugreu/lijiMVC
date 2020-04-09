@@ -1,10 +1,3 @@
-<?php
-
-$userModel = new \App\Model\UserModel();
-$user = $userModel->findUsersById($_SESSION['id']);
-
-?>
-
 <div class="row profile">
     <div class="col-md-3">
         <div class="profile-sidebar">

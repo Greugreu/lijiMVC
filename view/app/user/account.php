@@ -21,7 +21,7 @@
             <div class="profile-usermenu">
                 <ul class="nav">
                     <li class="active">
-                        <a href="#">
+                        <a href="<?= $view->path('account') ?>">
                             <i class="glyphicon glyphicon-home"></i>
                             Tableau de bord </a>
                     </li>
@@ -29,6 +29,11 @@
                         <a href="<?= $view->path('infos') ?>">
                             <i class="glyphicon glyphicon-user"></i>
                             Informations du compte </a>
+                    </li>
+                    <li>
+                        <a href="<?= $view->path('accountKids') ?>">
+                            <i class="glyphicon glyphicon-user"></i>
+                            Enfants </a>
                     </li>
                 </ul>
             </div>

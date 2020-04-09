@@ -11,8 +11,8 @@ body {
    font-family: 'roboto', 'sans-serif';
 }
 
-
 /****** HEADER *******/
+
 .home-nav ul li {
     display: inline-block;
     background-color: lime;
@@ -42,7 +42,6 @@ body {
     width: 300px;
     height: 300px;
 }
-
 
 /******* USERPROFILE ********/
 
@@ -148,7 +147,6 @@ body {
     background: #fff;
     min-height: 460px;
 }
-
 
 /* profile form */
 
