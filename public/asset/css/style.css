@@ -249,11 +249,11 @@ a:hover {
 
 .map {
     border-left: 1px solid #fff;
-    left: 33.3333%;
-    width: 60%;
+    left: 45%;
+    width: 50%;
     position: absolute;
-    height: 800px;
-    top: -102%;
+    height: 700px;
+    top: 25%;
     bottom: 0;
 }
 
