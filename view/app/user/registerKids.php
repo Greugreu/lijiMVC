@@ -42,51 +42,74 @@
     </div>
     <div class="col-md-9">
         <div class="profile-content">
-
-            <form action="#" method="post">
-                <div class="form_kids_nom">
-                    <label for="nom">Nom :</label>
-                    <?= $form->input('text', 'nom', 'Le nom de l\'enfant') ?>
-                    <?php if (!empty($errors['nom'])) {
-                        echo '<span class="error">'.$errors['nom'].'</span>';
-                    } ?>
+            <form id="contact-form" class="form" action="#" method="POST" role="form">
+                <div class="form-group">
+                    <label class="form-label" for="nom">Nom de l'enfant</label>
+                    <input type="text"
+                           class="form-control"
+                           id="nom"
+                           name="nom"
+                           placeholder="Nom de l'enfant"
+                           tabindex="1"
+                           required>
                 </div>
-                <div class="form_kids_prenom">
-                    <label for="prenom">Prénom :</label>
-                    <?= $form->input('text', 'prenom', 'Le prénom de l\'enfant') ?>
-                    <?php if (!empty($errors['prenom'])) {
-                        echo '<span class="error">'.$errors['prenom'].'</span>';
-                    } ?>
+                <div class="form-group">
+                    <label class="form-label" for="prenom">Prénom de l'enfant</label>
+                    <input type="text"
+                           class="form-control"
+                           id="prenom"
+                           name="prenom"
+                           placeholder="Prénom de l'enfant"
+                           tabindex="2"
+                           required>
                 </div>
-                <div class="form_kids_date">
-                    <label for="dateNaissance">Date de naissance de l'enfant :</label>
-                    <input type="date" id="dateNaissance" name="dateNaissance">
-                    <?php if (!empty($errors['dateNaissance'])) {
-                        echo '<span class="error">'.$errors['dateNaissance'].'</span>';
-                    } ?>
+                <div class="form-group">
+                    <label class="form-label" for="dateNaissance">Date de naissance</label>
+                    <input type="date"
+                           class="form-control"
+                           id="dateNaissance"
+                           name="dateNaissance"
+                           placeholder="Date de naissance"
+                           tabindex="3"
+                           required>
                 </div>
-                <div class="form_kids_allergie">
-                    <label for="allergies">L'enfant as-t'il une ou des allergies ?</label>
-                    <input type="checkbox" id="allergies" name="allergies" value="1">
+                <div class="form-group">
+                    <label class="form-label-kids" for="prenom">L'enfant as-t-il une ou des allergies ?</label>
+                    <input type="checkbox"
+                           id="allergies"
+                           name="allergies"
+                           value="1">
                 </div>
-                <div class="form_kids_allergie+">
-                    <label for="allergies+">Renseigner son ou ses allergies, séparer par une virgule :</label>
-                    <input type="text" id="allergies+" name="allergies+" placeholder="Allergies">
+                <div class="form-group">
+                    <label class="form-label" for="allergiesPlus">Renseigner son ou ses allergies, séparer par une virgule</label>
+                    <input type="text"
+                           class="form-control"
+                           id="allergiesPlus"
+                           name="allergiesPlus"
+                           placeholder="Renseigner son ou ses allergies, séparer par une virgule"
+                           tabindex="3"
+                           required>
                 </div>
                 <div class="pathologie">
                     <label for="pathologie">L'enfant as-t'il une ou des pathologies handicapantes ? :</label>
                     <input type="checkbox" id="pathologie" name="pathologie"  value="1">
                 </div>
-                <div class="pathologie+">
-                    <label for="pathologie+">Renseigner sa ou ses pathologies, séparer par une virgule :</label>
-                    <input type="text" name="pathologie+" id="pathologie+" placeholder="Pathologie">
+                <div class="form-group">
+                    <label class="form-label" for="pathologiePlus">Renseigner sa ou ses pathologies, séparer par une virgule</label>
+                    <input type="text"
+                           class="form-control"
+                           id="pathologiePlus"
+                           name="pathologiePlus"
+                           placeholder="Renseigner sa ou ses pathologies, séparer par une virgule"
+                           tabindex="3"
+                           required>
                 </div>
-                <div class="directives">
-                    <label for="directives">Avez vous des consignes particulières de garderie à donner pour l'enfant ?</label>
-                    <textarea name="directives" id="directives" cols="30" rows="10"></textarea>
+                <div class="form-group">
+                    <label class="form-label" for="message">Avez vous des consignes particulières de garderie à donner pour l'enfant ?</label>
+                    <textarea rows="5" cols="50" name="message" class="form-control" id="message" placeholder="Avez vous des consignes particulières de garderie à donner pour l'enfant ?" tabindex="4" required></textarea>
                 </div>
-                <div class="register">
-                    <?= $form->input('submit', 'submitted', NULL, 'Envoyer') ?>
+                <div class="text-center">
+                    <button type="submit" name="submitted" class="btn btn-start-order">Envoyer</button>
                 </div>
             </form>
         </div>
