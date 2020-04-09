@@ -30,6 +30,11 @@
                             <i class="glyphicon glyphicon-user"></i>
                             Informations du compte </a>
                     </li>
+                    <li class="">
+                        <a href="<?= $view->path('accountKids') ?>">
+                            <i class="glyphicon glyphicon-user"></i>
+                            Enfants </a>
+                    </li>
                 </ul>
             </div>
             <!-- END MENU -->

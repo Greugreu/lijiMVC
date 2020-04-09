@@ -20,7 +20,7 @@
             <!-- SIDEBAR MENU -->
             <div class="profile-usermenu">
                 <ul class="nav">
-                    <li class="active">
+                    <li class="">
                         <a href="<?= $view->path('account') ?>">
                             <i class="glyphicon glyphicon-home"></i>
                             Tableau de bord </a>
@@ -30,7 +30,7 @@
                             <i class="glyphicon glyphicon-user"></i>
                             Informations du compte </a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="<?= $view->path('accountKids') ?>">
                             <i class="glyphicon glyphicon-user"></i>
                             Enfants </a>
@@ -42,15 +42,8 @@
     </div>
     <div class="col-md-9">
         <div class="profile-content">
-            <div class="account-nav">
-                <nav>
-                    <ul>
-                        <li><a href="<?= $view->path('account') ?>">Retour</a></li>
-                        <li><a href="<?= $view->path('registerKids') ?>">Inscrire un nouvel enfant</a></li>
-                    </ul>
-                </nav>
-            </div>
-
+                <button type="button" onclick="location.href='<?= $view->path('registerKids') ?>'" class="btn
+                btn-success btn-sm">Ajouter</button>
             <table class="table table-stripped">
                 <thead>
                 <tr>
