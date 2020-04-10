@@ -12,7 +12,6 @@ $validation = new \App\Service\Validation();
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="steelsheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
             integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
             crossorigin="anonymous"></script>
@@ -31,11 +30,7 @@ $validation = new \App\Service\Validation();
         <nav class="navbar navbar-expand-lg navbar-expand-md navbar-expand-sm navbar-expand-xs ">
             <a class="navbar-brand" href="<?= $view->path('home'); ?>"><img src="asset/img/logo.png" width="120"
                                                                             height="80" alt="" class="logo"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <div class="collapse navbar-collapse">
 
                 <ul class="navbar-nav">
                     <li class="nav-item active">
@@ -89,11 +84,11 @@ $validation = new \App\Service\Validation();
                         <a href="#"><i class="fa fa-facebook"></i></a>
                         <a href="#"><i class="fa fa-twitter"></i></a>
                         <a href="#"><i class="fa fa-linkedin"></i></a>
-                        <a href="#"><i class="fa fa-googl"></i></a>
+                        <a href="#"><i class="fa fa-google"></i></a>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12 segment-four sm-mb-30">
                         <h2>Contact</h2>
-                        <p><i class="fa fa-home mr-3 "></i> 16 rue de petit galopin</p>
+                        <p><i class="fa fa-home mr-3 "></i> 16 rue du petit galopin</p>
                         <p><i class="fa fa-envelope mr-3"></i>liji@gmail.com</p>
                         <p><i class="fa fa-phone mr-3"></i>+33 6 52 16 33 45</p>
                     </div>

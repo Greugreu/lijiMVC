@@ -1,36 +1,39 @@
-<h1>
-    <?= $message ?>
-</h1>
+<section class="container-fluid">
 
-<?php
-//use App\Service\Tools;
-//
-////Tools::debug($_SESSION);
-//?>
+    <div class="container" id="login">
 
-<form action="#" method="post">
-    <div class="loginMail">
-        <?= $form->label('mail') ?>
-        <?php echo $form->input('email', 'mail', 'Votre mail');
-        if (!empty($errors['mail'])) {
-            echo '<span class="error">'.$errors['mail'].'</span>';
-        } ?>
+        <div class="section-content">
+            <h1 class="section-header"><?= $message ?></h1>
+        </div>
 
-    </div>
+        <div class="login-section">
+            <div class="container">
+                <form>
+                    <div class="col-md-6 form-line">
+                        <div class="form-group">
+                            <div class="loginMail">
+                                <?= $form->label('mail') ?>
+                                <?php echo $form->input('email', 'mail', 'Votre mail');
+                                if (!empty($errors['mail'])) {
+                                    echo '<span class="error">' . $errors['mail'] . '</span>';
+                                } ?>
 
-    <div class="loginPass">
-        <?= $form->label('password') ?>
-        <?php echo $form->input('password', 'password', 'Votre mot de passe');
-        if (!empty($errors['password'])) {
-            echo '<span class="error">'.$errors['password'].'</span>';
-        } ?>
-    </div>
+                            </div>
+                            <div class="loginPass">
+                                <?= $form->label('password') ?>
+                                <?php echo $form->input('password', 'password', 'Votre mot de passe');
+                                if (!empty($errors['password'])) {
+                                    echo '<span class="error">' . $errors['password'] . '</span>';
+                                } ?>
+                            </div>
 
-    <div class="loginSubmit">
-        <?= $form->input('submit', 'submitted', NULL, 'Envoyer') ?>
-    </div>
-</form>
+                            <div class="loginSubmit">
+                                <?= $form->input('submit', 'submitted', NULL, 'Envoyer') ?>
+                            </div>
+                        </div>
+                </form>
+                <a href="<?= $view->path('forgot'); ?>">Mot de passe oublié ?</a>
+            </div>
 
-<a href="<?= $view->path('forgot'); ?>">Mot de passe oublié ?</a>
-
-<?php
+        </div>
+</section>

@@ -13,24 +13,46 @@ body{
 }
 
 /****** HEADER *******/
+
 header nav.navbar.navbar-expand-lg.navbar-expand-md.navbar-expand-sm.navbar-expand-xs{
-    background: yellow;
+    background: #660066;
     height: 62px;
+
 }
 .container-fluid{
     background: red;
 
+}
+
+a.nav-link{
+    display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+    background-color: #b300b3;
+    border-radius: 15px;
+    box-shadow: 0 6px #6e2c8e;
+    color:#d580ff ;
+    font-size: 18px;
+}
+a.nav-link:hover{
+    color: #8a0e7b;
 
 }
 
+a.nav-link:active{
+    background-color: #9e029e;
+    box-shadow: 0 5px #470169;
+    transform: translate(4px);
+}
 
 /*!******* BODY *******!*/
+
 div.search{
     width: 60%;
     height: 238px;
     border: 2px solid blue;
     position: absolute;
-    background: black;
+    background: linear-gradient(#e66465, #9198e5);
     padding-top: 10px;
     top: 60%;
     left: 50%;
@@ -44,14 +66,14 @@ div.custom-container{
 }
 
 div.map{
-    height: 500px;
-    background: #c65039;
+    height: 720px;
+    background: #fff;
 
 }
 
 /******* FOOTER *******/
 
-p{
+footer p{
     color: #999;
     line-height: 15px;
 }
@@ -133,8 +155,8 @@ div.footer-copyright.text-center{
     margin-top: 50px;
 }
 
-
 /*responsive*/
+
 @media only screen and (min-width: 768px) and (max-width: 991px)  {
     .md-mb-30{
         margin-bottom: 50px;
@@ -156,16 +178,8 @@ div.footer-copyright.text-center{
     }
 
 }
-@media only screen and(max-width: 575px) {
-    .navbar-expand-xs{
-        width: 50%;
-    }
-
-}
-
 
 /*page contact*/
-
 
 .content-header{
     font-family: 'Oleo Script', cursive;
@@ -229,10 +243,7 @@ button.btn.btn-default.submit:hover{
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
-
 /*page register*/
-
-
 
 div.container.form-group{
     width: 100%;
@@ -249,9 +260,6 @@ div.container.form-group{
 }
 
 
-button.btn.btn-default.submit:hover{
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-}
 div.form-control input{
     border: none;
     width: 100%;
@@ -261,6 +269,51 @@ div.form-control input{
 
     width: 25%;
 }
+
+div.col{
+    width: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.sign-right{
+
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 246px;
+}
+
+#top-bloc{
+    background-color: orange;
+}
+#bottom-bloc{
+    background-color: green;
+}
+
+/*page login*/
+
+#login{
+
+    font-family: 'Teko', sans-serif;
+    padding-top: 50px;
+    height: 750px;
+    background: -webkit-linear-gradient(to left, #3a6186 , #89253e); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #3a6186 , #89253e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color : #fff;
+}
+
+.login-section{
+    padding-top: 40px;
+}
+.login-section .col-md-6{
+    width: 50%;
+}
+
+
+
+
+
 
 
 
