@@ -22,17 +22,17 @@
                 <ul class="nav">
                     <li class="active">
                         <a href="<?= $view->path('account') ?>">
-                            <i class="glyphicon glyphicon-home"></i>
+                            <i class="fas fa-house-user"></i>
                             Tableau de bord </a>
                     </li>
                     <li>
                         <a href="<?= $view->path('infos') ?>">
-                            <i class="glyphicon glyphicon-user"></i>
+                            <i class="fas fa-user"></i>
                             Informations du compte </a>
                     </li>
                     <li>
                         <a href="<?= $view->path('accountKids') ?>">
-                            <i class="glyphicon glyphicon-user"></i>
+                            <i class="fas fa-child"></i>
                             Enfants </a>
                     </li>
                 </ul>
@@ -42,7 +42,7 @@
     </div>
     <div class="col-md-9">
         <div class="profile-content">
-            <h2>Mes rendez vous</h2>
+            <h2 style="color: #a2a2a2">Mes rendez vous</h2>
             <table class="table table-stripped">
                 <thead>
                 <tr>
@@ -66,7 +66,7 @@
                 </tbody>
             </table>
 
-            <h2>Autre personne responsable</h2>
+            <h2 style="color: #a2a2a2">Autre personne responsable</h2>
 
             <table class="table table-stripped">
                 <thead>

@@ -91,7 +91,7 @@ class DefaultController extends Controller
                         'email' => $user->mail,
                         'ip' => $_SERVER['REMOTE_ADDR'],
                     );
-                    echo 'ça passe';
+                    header('Location: home');
                 } else {
                     $errors['password'] = 'Mail ou mot de passe incorrect';
                 }

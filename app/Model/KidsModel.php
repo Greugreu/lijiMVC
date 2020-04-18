@@ -13,7 +13,7 @@ use App\Service\Tools;
 class KidsModel extends Model
 {
     protected static $table = 'kids';
-    private int $idkids;
+    private $idkids;
     private $nom;
     private $prenom;
     private $dateNaissance;

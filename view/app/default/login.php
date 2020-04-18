@@ -8,7 +8,7 @@
 
         <div class="login-section">
             <div class="container">
-                <form>
+                <form action="#" method="post">
                     <div class="col-md-6 form-line">
                         <div class="form-group">
                             <div class="loginMail">

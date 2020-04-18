@@ -16,8 +16,5 @@
     </div>
 
 </section>
-<section class="container-fluid">
-    <div class="map"></div>
-</section>
 
 

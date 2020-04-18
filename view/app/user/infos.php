@@ -20,19 +20,19 @@
             <!-- SIDEBAR MENU -->
             <div class="profile-usermenu">
                 <ul class="nav">
-                    <li class="a">
+                    <li>
                         <a href="<?= $view->path('account') ?>">
-                            <i class="glyphicon glyphicon-home"></i>
+                            <i class="fas fa-house-user"></i>
                             Tableau de bord </a>
                     </li>
                     <li class="active">
                         <a href="<?= $view->path('infos') ?>">
-                            <i class="glyphicon glyphicon-user"></i>
+                            <i class="fas fa-user"></i>
                             Informations du compte </a>
                     </li>
-                    <li class="">
+                    <li>
                         <a href="<?= $view->path('accountKids') ?>">
-                            <i class="glyphicon glyphicon-user"></i>
+                            <i class="fas fa-child"></i>
                             Enfants </a>
                     </li>
                 </ul>
@@ -137,6 +137,76 @@
                                        placeholder="Téléphone de travail"
                                        tabindex="9"
                                        value="<?= $user->telJob ?>">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="nomConjoin">Nom du conjoin</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="nomConjoin"
+                                       name="nomConjoin"
+                                       placeholder="Nom du conjoin"
+                                       tabindex="9"
+                                       value="<?= $user->nomConjoin ?>">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="prenomConjoin">Prénom du conjoin</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="prenomConjoin"
+                                       name="prenomConjoin"
+                                       placeholder="Prénom du conjoin"
+                                       tabindex="9"
+                                       value="<?= $user->prenomConjoin ?>">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="adresseConjoin">Adresse du conjoin</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="adresseConjoin"
+                                       name="adresseConjoin"
+                                       placeholder="Adresse du conjoin"
+                                       tabindex="9"
+                                       value="<?= $user->adresseConjoin ?>">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="telephoneConjoin">Téléphone du conjoin</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="telephoneConjoin"
+                                       name="telephoneConjoin"
+                                       placeholder="Téléphone du conjoin"
+                                       tabindex="9"
+                                       value="<?= $user->telephoneConjoin ?>">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="mobileConjoin">Mobile du conjoin</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="mobileConjoin"
+                                       name="mobileConjoin"
+                                       placeholder="Mobile du conjoin"
+                                       tabindex="9"
+                                       value="<?= $user->mobileConjoin ?>">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="jobConjoin">Travail du conjoin</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="jobConjoin"
+                                       name="jobConjoin"
+                                       placeholder="Travail du conjoin"
+                                       tabindex="9"
+                                       value="<?= $user->jobConjoin ?>">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="lieuConjoin">Lieu de travail du conjoin</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="lieuConjoin"
+                                       name="lieuConjoin"
+                                       placeholder="Lieu de travail du conjoin"
+                                       tabindex="9"
+                                       value="<?= $user->lieuConjoin ?>">
                             </div>
                             <div class="text-center">
                                 <button type="submit" name="submitted" class="btn btn-start-order">Envoyer</button>

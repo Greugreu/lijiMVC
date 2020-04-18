@@ -50,8 +50,8 @@ $validation = new \App\Service\Validation();
                         <a class="nav-link" href="<?= $view->path('contact'); ?>">contact</a>
                     </li>
                     <?php if ($validation->isLogged() == true) { ?>
-                        <li class="nav-item"><a class="navlink" href="<?= $view->path('account') ?>">Mon Compte</a></li>
-                        <li class="nav-item"><a class="navlink" href="<?= $view->path('logout') ?>">Déconnexion</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= $view->path('account') ?>">Mon Compte</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= $view->path('logout') ?>">Déconnexion</a></li>
                     <?php } else { ?>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= $view->path('login'); ?>">connexion</a>
@@ -69,45 +69,6 @@ $validation = new \App\Service\Validation();
     <div class="container">
         <?= $content; ?>
     </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-            crossorigin="anonymous"></script>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <!-- Mapbox GL JS -->
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
-    <!-- Geocoder plugin -->
-    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.min.js'></script>
-    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.css' type='text/css' />
-    <!-- Turf.js plugin -->
-    <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>    <link rel="stylesheet" type="text/css" href="<?= $view->asset('css/style.css'); ?>">
-</head>
-<body>
-<div class="wrap">
-    <header>
-        <img src="asset/img/logo.png" class="logo" alt="">
-        <nav class="home-nav">
-            <ul>
-                <li><a href="<?= $view->path('contact'); ?>">Contact</a></li>
-                <?php if ($validation->isLogged() == true) { ?>
-                    <li><a href="<?= $view->path('logout') ?>">Déconnexion</a></li>
-                    <li><a href="<?= $view->path('account') ?>">Mon Compte</a></li>
-                <?php } else { ?>
-                    <li><a href="<?= $view->path('login'); ?>">Connexion</a></li>
-                    <li><a href="<?= $view->path('register'); ?>">Inscritpion</a></li>
-                <?php } ?>
-                <li><a href="<?= $view->path('home'); ?>">Home</a></li>
-                <li><a href="http://localhost/WPliji/" target="_blank">Espace Pro</a></li>
-                <!--                    <li><a href="<? /*= $view->path('single',array(12)); */ ?>">Single</a></li>
-                                        <li><a href="<? /*= $view->path('single2',array(12,'dedede')); */ ?>">Single2</a></li>
-                    -->                </ul>
-        </nav>
-    </header>
-    <div class="clear"></div>
-    <div class="container">
-        <?= $content; ?>
-    </div>
 
     <footer>
         <div class="footer-top">
@@ -122,8 +83,6 @@ $validation = new \App\Service\Validation();
                         <ul>
                             <li><a href="<?= $view->path('cgu') ?>">CGU</a></li>
                             <li><a href="<?= $view->path('mentions') ?>">Mentions</a></li>
-                            <li><a href="#">link</a></li>
-                            <li><a href="#">link</a></li>
                         </ul>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12 segment-three sm-mb-30">

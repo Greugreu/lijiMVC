@@ -20,19 +20,19 @@
             <!-- SIDEBAR MENU -->
             <div class="profile-usermenu">
                 <ul class="nav">
-                    <li class="">
+                    <li >
                         <a href="<?= $view->path('account') ?>">
-                            <i class="glyphicon glyphicon-home"></i>
+                            <i class="fas fa-house-user"></i>
                             Tableau de bord </a>
                     </li>
                     <li>
                         <a href="<?= $view->path('infos') ?>">
-                            <i class="glyphicon glyphicon-user"></i>
+                            <i class="fas fa-user"></i>
                             Informations du compte </a>
                     </li>
                     <li class="active">
                         <a href="<?= $view->path('accountKids') ?>">
-                            <i class="glyphicon glyphicon-user"></i>
+                            <i class="fas fa-child"></i>
                             Enfants </a>
                     </li>
                 </ul>
