@@ -40,25 +40,25 @@ class UserController extends Controller
             $post = $this->cleanXss($_POST);
             $validation = new Validation();
             $errors['nom'] = $validation->textValid($post['nom'], 'nom', 2, 50);
-            $errors['nomC'] = $validation->textValid($post['nomC'], 'nom', 2, 50);
+            $errors['nomC'] = $validation->textValid($post['nomConjoin'], 'nom', 2, 50);
             $errors['prenom'] = $validation->textValid($post['prenom'], 'prenom', 2, 50);
-            $errors['prenomC'] = $validation->textValid($post['prenomC'], 'prenomC', 2, 50);
-            $errors['tel'] = $validation->telValid($post['tel'], 'telephone');
-            $errors['telC'] = $validation->telValid($post['telC'], 'telephone');
+            $errors['prenomC'] = $validation->textValid($post['prenomConjoin'], 'prenomConjoin', 2, 50);
+            $errors['tel'] = $validation->telValid($post['telephone'], 'telephone');
+            $errors['telC'] = $validation->telValid($post['telephoneConjoin'], 'telephone');
             $errors['mail'] = $validation->emailValid($post['mail']);
 
             if (empty($post['adresseConjoin'])) {
                 $post['adresseC'] = $post['adresse'];
             }
-            if (empty($post['telC'])) {
-                $post['telC'] = $post['tel'];
+            if (empty($post['telephoneConjoinn'])) {
+                $post['telephoneConjoinn'] = $post['telephone'];
             }
             var_dump($post);
             if ($validation->IsValid($errors) == true) {
                 UserModel::update($post['nom'],$post['prenom'],$post['adresse'],
-                    $post['region'], $post['job'], $post['lieuJob'], $post['telJob'], $post['tel'], $post['mail'],
-                    $post['nomC'], $post['prenomC'], $post['adresseC'], $post['telC'], $post['mobileC'],
-                    $post['jobC'], $post['lieuJobC'], $idUser);
+                    $post['region'], $post['job'], $post['lieuJob'], $post['telJob'], $post['telephone'], $post['mail'],
+                    $post['nomConjoin'], $post['prenomConjoin'], $post['adresseConjoin'], $post['telephoneConjoin'], $post['mobileConjoin'],
+                    $post['jobConjoin'], $post['lieuConjoin'], $idUser);
             }
         }
 

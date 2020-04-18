@@ -54,7 +54,7 @@ class UserModel extends Model
                                   $jobConjoin, $lieuConjoin):
     void
     {
-        $sql = $sql = "UPDATE " . self::getTable() . " SET nom = ?,prenom = ?,adresse = ?,region = ?,job = ?,lieuJob = ?,
+        $sql = "UPDATE " . self::getTable() . " SET nom = ?,prenom = ?,adresse = ?,region = ?,job = ?,lieuJob = ?,
         telJob = ?,telephone = ?,mail = ?,nomConjoin = ?,prenomConjoin = ?,adresseConjoin = ?,telephoneConjoin = ?,
         mobileConjoin = ?,jobConjoin = ?,lieuConjoin = ?,modifiedAt = NOW() WHERE idUsers = ?";
         App::getDatabase()->prepareInsert($sql,[$nom, $prenom, $adresse, $region, $job, $lieuJob, $telJob, $telephone, $mail,
