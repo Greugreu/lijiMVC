@@ -60,6 +60,7 @@ $validation = new \App\Service\Validation();
                             <a class="nav-link" href="<?= $view->path('register'); ?>">inscription</a>
                         </li>
                     <?php } ?>
+                    <li class="nav-item"><a class="nav-link" href="http://localhost/WPliji" target="_blank">Espace Pro</a></li>
 
                 </ul>
             </div>
