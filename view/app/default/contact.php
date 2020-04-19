@@ -1,7 +1,7 @@
 <section class="container-fluid ">
     <div class="container" id="contact">
         <div class="section-content">
-            <h1 class="section-header">Envoyez <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s">nous un message</span></h1>
+            <h1 class="section-header">Envoyez nous un message</span></h1>
             <h3>Pour toute question la section ci-dessous est là pour ça</h3>
         </div>
         <div class="contact-section">

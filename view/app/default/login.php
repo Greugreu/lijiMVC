@@ -1,17 +1,15 @@
 <section class="container-fluid">
 
     <div class="container" id="login">
-
-        <div class="section-content">
-            <h1 class="section-header"><?= $message ?></h1>
-        </div>
-
         <div class="login-section">
-            <div class="container">
+            <div class="container" id="connexion">
+                <div class="section-content">
+                    <h1 class="section-header"><?= $message ?></h1>
+                </div>
                 <form action="#" method="post">
                     <div class="col-md-6 form-line">
                         <div class="form-group">
-                            <div class="loginMail">
+                            <div class="loginMail form-group">
                                 <?= $form->label('mail') ?>
                                 <?php echo $form->input('email', 'mail', 'Votre mail');
                                 if (!empty($errors['mail'])) {
@@ -19,7 +17,7 @@
                                 } ?>
 
                             </div>
-                            <div class="loginPass">
+                            <div class="loginPass form-group">
                                 <?= $form->label('password') ?>
                                 <?php echo $form->input('password', 'password', 'Votre mot de passe');
                                 if (!empty($errors['password'])) {
@@ -27,11 +25,12 @@
                                 } ?>
                             </div>
 
-                            <div class="loginSubmit">
-                                <?= $form->input('submit', 'submitted', NULL, 'Envoyer') ?>
-                            </div>
+
                         </div>
                 </form>
+                <div class="loginSubmit form-group">
+                    <?= $form->input('submit', 'submitted', NULL, 'Envoyer') ?>
+                </div>
                 <a href="<?= $view->path('forgot'); ?>">Mot de passe oublié ?</a>
             </div>
 

@@ -4,19 +4,19 @@
             <h1 class="section-header"><?= $message ?></h1>
         </div>
         <div class="row">
-            <div class="col">
-                <div class="register-section">
+            <div class="col ">
+                <div class="register-section align-items-center" id="register">
 
-                    <form action="#" method="post">
+                    <form class="container" action="#" method="post">
                         <div class="col">
-                            <div class="forNom">
+                            <div class="forNom form-group">
                                 <label for="nom">Nom</label>
                                 <?= $form->input('text', 'nom', 'Votre nom') ?>
                                 <?php if (!empty($errors['nom'])) {
                                     echo '<span class="error">' . $errors['nom'] . '</span>';
                                 } ?>
                             </div>
-                            <div class="forNom">
+                            <div class="forNom form-group">
                                 <label for="prenom">Prenom</label>
                                 <?= $form->input('text', 'prenom', 'Votre prenom') ?>
                                 <?php if (!empty($errors['prenom'])) {
@@ -24,21 +24,21 @@
                                 } ?>
 
                             </div>
-                            <div class="forMail">
+                            <div class="forMail form-group">
                                 <label for="mail">Mail</label>
                                 <?= $form->input('email', 'mail', 'Votre mail') ?>
                                 <?php if (!empty($errors['mail'])) {
                                     echo '<span class="error">' . $errors['mail'] . '</span>';
                                 } ?>
                             </div>
-                            <div class="formPassword">
+                            <div class="formPassword form-group">
                                 <label for="password">Mot de passe</label>
                                 <?= $form->input('password', 'password', 'Votre mot de passe') ?>
                                 <?php if (!empty($errors['password'])) {
                                     echo '<span class="error">' . $errors['password'] . '</span>';
                                 } ?>
                             </div>
-                            <div class="cfrmPassword">
+                            <div class="cfrmPassword form-group">
                                 <label for="cfrm">Confirmez votre mot de passe</label>
                                 <?= $form->input('password', 'cfrm', 'Confirmez votre mot de passe') ?>
                                 <?php if (!empty($errors['cfrm'])) {
@@ -61,17 +61,7 @@
 
                 </div>
             </div>
-            <div class="col">
 
-                    <div id="top-bloc" class="sign-right">
-                        Inscription Pro
-                    </div>
-
-                    <div id="bottom-bloc" class="sign-right">
-                        Inscription particulier
-                    </div>
-
-            </div>
         </div>
 
 </section>
