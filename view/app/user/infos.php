@@ -1,82 +1,150 @@
-<?php
-
-$userModel = new \App\Model\UserModel();
-$user = $userModel->findUsersById($_SESSION['id']);
-
-$v = new \App\Service\Tools();
-$v->debug($user);
-?>
-
-<h1><?= $message ?></h1>
-
-<form action="" method="post">
-    <div class="accNom">
-        <label for="nom">Votre nom</label>
-        <input type="text" name="nom" id="nom" value="<?= $user->nom; ?>">
+<div class="row profile">
+    <div class="col-md-3">
+        <div class="profile-sidebar">
+            <!-- SIDEBAR USER TITLE -->
+            <div class="profile-usertitle">
+                <div class="profile-usertitle-name">
+                    <?php echo $user->nom . ' ' . $user->prenom; ?>
+                </div>
+                <div class="profile-usertitle-job">
+                    Parent
+                </div>
+            </div>
+            <!-- END SIDEBAR USER TITLE -->
+            <!-- SIDEBAR BUTTONS -->
+            <!--<div class="profile-userbuttons">
+                <button type="button" class="btn btn-success btn-sm">Follow</button>
+                <button type="button" class="btn btn-danger btn-sm">Message</button>
+            </div>-->
+            <!-- END SIDEBAR BUTTONS -->
+            <!-- SIDEBAR MENU -->
+            <div class="profile-usermenu">
+                <ul class="nav">
+                    <li class="a">
+                        <a href="<?= $view->path('account') ?>">
+                            <i class="glyphicon glyphicon-home"></i>
+                            Tableau de bord </a>
+                    </li>
+                    <li class="active">
+                        <a href="<?= $view->path('infos') ?>">
+                            <i class="glyphicon glyphicon-user"></i>
+                            Informations du compte </a>
+                    </li>
+                    <li class="">
+                        <a href="<?= $view->path('accountKids') ?>">
+                            <i class="glyphicon glyphicon-user"></i>
+                            Enfants </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- END MENU -->
+        </div>
     </div>
-    <div class="accPrenom">
-        <label for="prenom">Votre Prenom</label>
-        <input type="text" name="prenom" id="prenom" value="<?= $user->prenom; ?>">
+    <div class="col-md-9">
+        <div class="profile-content">
+            <h2>Vos informations</h2>
+                        <form id="contact-form" class="form" action="#" method="POST" role="form">
+                            <div class="form-group">
+                                <label class="form-label" for="name">Votre nom</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="nom"
+                                       name="nom"
+                                       placeholder="Votre nom"
+                                       tabindex="1"
+                                       value="<?= $user->nom ?>"
+                                       required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="prenom">Votre prenom</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="prenom"
+                                       name="prenom"
+                                       placeholder="Votre prenom"
+                                       tabindex="2"
+                                       value="<?= $user->prenom ?>"
+                                       required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="adresse">Votre adresse</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="adresse"
+                                       name="adresse"
+                                       placeholder="Votre adresse"
+                                       tabindex="3"
+                                       value="<?= $user->adresse ?>"
+                                       required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="region">Région</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="region"
+                                       name="region"
+                                       placeholder="Région"
+                                       tabindex="4"
+                                       value="<?= $user->region ?>">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="telephone">Numéro de téléphone</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="telephone"
+                                       name="telephone"
+                                       placeholder="Numéro de téléphone"
+                                       tabindex="5"
+                                       value="<?= $user->telephone ?>"
+                                       required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="mail">Adresse mail</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="mail"
+                                       name="mail"
+                                       placeholder="adresse mail"
+                                       tabindex="6"
+                                       value="<?= $user->mail ?>">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="job">Travail</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="job"
+                                       name="job"
+                                       placeholder="Travail"
+                                       tabindex="7"
+                                       value="<?= $user->job ?>">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="lieuJob">Adresse de travail</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="lieuJob"
+                                       name="lieuJob"
+                                       placeholder="Adresse de travail"
+                                       tabindex="8"
+                                       value="<?= $user->lieuJob ?>">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="telJob">Téléphone de travail</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="telJob"
+                                       name="telJob"
+                                       placeholder="Téléphone de travail"
+                                       tabindex="9"
+                                       value="<?= $user->telJob ?>">
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" name="submitted" class="btn btn-start-order">Envoyer</button>
+                            </div>
+                        </form>
+                    </div>
     </div>
-    <div class="accAdresse">
-        <label for="adresse">Votre adresse</label>
-        <input type="text" name="adresse" id="adresse" value="<?= $user->adresse; ?>">
-    </div>
-    <div class="accRegion">
-        <label for="region">Region</label>
-        <input type="text" name="region" id="region" value="<?= $user->region; ?>">
-    </div>
-    <div class="accJob">
-        <label for="job">Votre profession</label>
-        <input type="text" name="job" id="job" value="<?= $user->job; ?>">
-    </div>
-    <div class="accLieuJob">
-        <label for="lieuJob">L'adresse de votre lieu de travail</label>
-        <input type="text" name="lieuJob" id="lieuJob" value="<?= $user->lieuJob; ?>">
-    </div>
-    <div class="accTelJob">
-        <label for="telJob">Votre numéro de téléphon professionnel</label>
-        <input type="number" name="telJob" id="telJob" value="<?= $user->telJob; ?>">
-    </div>
-    <div class="accTel">
-        <label for="tel">Votre numéro de téléphone personnel</label>
-        <input type="number" name="tel" id="tel" value="<?= $user->telephone; ?>">
-    </div>
-    <div class="accMail">
-        <label for="mail">Votre adresse email</label>
-        <input type="text" name="mail" id="mail" value="<?= $user->mail; ?>">
-    </div>
-    <div class="accNomConjoin">
-        <label for="nomC">Nom du conjoin</label>
-        <input type="text" name="nomC" id="nomC" value="<?= $user->nomConjoin; ?>">
-    </div>
-    <div class="accPrenomConjoin">
-        <label for="prenomC">Prénom du conjoin</label>
-        <input type="text" name="prenomC" id="prenomC" value="<?= $user->prenomConjoin; ?>">
-    </div>
-    <div class="accAdresseConjoin">
-        <label for="adresseC">Adresse du conjoin (laisser vide si la même)</label>
-        <input type="text" name="adresseC" id="adresseC" value="<?= $user->adresseConjoin; ?>">
-    </div>
-    <div class="accTelConjoin">
-        <label for="telC">Numéro de téléphone personnel du conjoin (laisser vide si le même)</label>
-        <input type="number" name="telC" id="telC" value="<?= $user->telephoneConjoin; ?>">
-    </div>
-    <div class="accMobileConjoin">
-        <label for="mobileC">Numéro mobile du conjoin</label>
-        <input type="number" name="mobileC" id="mobileC" value="<?= $user->mobileConjoin; ?>">
-    </div>
-    <div class="accJobConjoin">
-        <label for="jobC">Profession du conjoin</label>
-        <input type="text" name="jobC" id="jobC" value="<?= $user->jobConjoin; ?>">
-    </div>
-    <div class="accLieuJobConjoin">
-        <label for="lieuJobC">Adresse du lieu de travail du conjoin</label>
-        <input type="text" name="lieuJobC" id="lieuJobC" value="<?= $user->lieuConjoin; ?>">
-    </div>
-    <input type="submit" name="submitted" value="Envoyer">
-</form>
-
+</div>
 
 
 <?php

@@ -17,7 +17,14 @@
 
 </section>
 <section class="container-fluid">
-    <div class="map"></div>
+    <div class="container">
+        <div class="mapbox">
+
+            <div id='map' class='map'>Map</div>
+        </div>
+
+
+    </div>
 </section>
 
 

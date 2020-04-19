@@ -46,7 +46,7 @@
                                 } ?>
                             </div>
                             <div class="cgu">
-                                <label for="cgu">Veuillez accépter les CGU</label>
+                                <label for="cgu">CGU</label>
                                 <?= $form->inputCheckbox('checkbox', 'cgu', true) ?>
                                 <?php if (!empty($errors['cgu'])) {
                                     echo '<span class="error">' . $errors['cgu'] . '</span>';
@@ -61,17 +61,7 @@
 
                 </div>
             </div>
-            <div class="col">
 
-                    <div id="top-bloc" class="sign-right">
-                        Inscription Pro
-                    </div>
-
-                    <div id="bottom-bloc" class="sign-right">
-                        Inscription particulier
-                    </div>
-
-            </div>
         </div>
 
 </section>

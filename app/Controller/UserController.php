@@ -32,6 +32,8 @@ class UserController extends Controller
     {
         $message = 'Informations personnelles';
         $idUser = $_SESSION['id'];
+        $userModel = new \App\Model\UserModel();
+        $user = $userModel->findUsersById($_SESSION['id']);
         $errors = array();
         $form = new Form($errors, 'post');
         if (isset($_POST['submitted'])) {
@@ -60,7 +62,7 @@ class UserController extends Controller
             }
         }
 
-        $this->render('app.user.infos', compact('message', 'form'));
+        $this->render('app.user.infos', compact('message', 'form', 'user'));
     }
 
 

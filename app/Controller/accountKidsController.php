@@ -17,14 +17,18 @@ class accountKidsController extends UserController
 
         $kids = KidsModel::findAllKidsByUser($_SESSION['id']);
 
-        Tools::debug($kids);
+        $userModel = new \App\Model\UserModel();
+        $user = $userModel->findUsersById($_SESSION['id']);
 
-        $this->render('app.user.accountKids', compact('message','kids'));
+        $this->render('app.user.accountKids', compact('message','kids', 'user'));
     }
 
     public function registerKid()
     {
         $message = 'Inscrire un nouvel enfant';
+
+        $userModel = new \App\Model\UserModel();
+        $user = $userModel->findUsersById($_SESSION['id']);
 
         $errors = array();
         $form = new Form($errors, 'post');
@@ -49,6 +53,6 @@ class accountKidsController extends UserController
             }
         }
 
-        $this->render('app.user.registerKids', compact('message', 'form', 'errors'));
+        $this->render('app.user.registerKids', compact('message', 'form', 'errors','user'));
     }
 }

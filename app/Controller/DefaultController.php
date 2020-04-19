@@ -84,11 +84,11 @@ class DefaultController extends Controller
                 $user = UserModel::findUserByMail($post['mail']);
                 if ($user->mail === $post['mail'] && password_verify($post['password'], $user->password)) {
                     $_SESSION = array(
-                        'id' => $user->id,
+                        'id' => $user->idUsers,
                         'nom' => $user->nom,
                         'prenom' => $user->prenom,
                         'role' => $user->role,
-                        'email' => $user->email,
+                        'email' => $user->mail,
                         'ip' => $_SERVER['REMOTE_ADDR'],
                     );
                     echo 'ça passe';
