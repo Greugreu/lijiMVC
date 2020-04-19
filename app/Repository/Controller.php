@@ -30,25 +30,16 @@ class Controller
 
     protected function Abort403()
     {
+        $view = new View();
         header('HTTP/1.0 403 Forbidden');
-        $this->redirect('index.php?page=403');
+        $this->redirect($view->path('403'));
     }
 
     protected function Abort404()
     {
+        $view = new View();
         header('HTTP/1.0 404 Not Found');
-        $this->redirect('index.php?page=404');
-    }
-
-    /**
-     * print_r coké
-     * @param  mixed $var La variable a déboger
-     */
-    protected function debug($var)
-    {
-        echo '<pre style="height:100px;overflow-y: scroll;font-size:.8em;padding: 10px; font-family: Consolas, Monospace; background-color: #000; color: #fff;">';
-        print_r($var);
-        echo '</pre>';
+        $this->redirect($view->path('404'));
     }
 
     /**
@@ -75,9 +66,15 @@ class Controller
         return $post;
     }
 
-    protected function redirect($url)
+    protected function redirect($url,$args = array())
     {
-        header('Location: '.$url);
+        $view = new View();
+        if(!empty($args)) {
+            $realurl = $view->path($url,$args);
+        } else {
+            $realurl = $view->path($url);
+        }
+        header('Location: '.$realurl);
         die();
     }
 

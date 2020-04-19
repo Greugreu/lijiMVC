@@ -5,6 +5,15 @@ class Validation
 {
     protected $errors = array();
 
+    public function isLogged(): bool
+    {
+        if (!empty($_SESSION)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function IsValid($errors)
     {
         foreach ($errors as $key => $value) {
@@ -60,5 +69,26 @@ class Validation
 
     }
 
+    public function generateErrorRepeat($value, $value2, $text){
+        if($value != $value2){
+            return '<p style="color: red">'.$text.'</p>';
+        }
+    }
 
+    public function generateErrorCheckBox($value, $text){
+        if(!$value){
+            return $text;
+        }
+    }
+
+    public function telValid($int, $title)
+    {
+        $error = '';
+        if (!empty($int)) {
+            if(!preg_match("#[0][1-9][- \.?]?([0-9][0-9][- \.?]?){4}$#", $int)) {
+                $error = 'Veuillez entrer un numéro de téléphone correct';
+            }
+        }
+        return $error;
+    }
 }

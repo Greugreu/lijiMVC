@@ -45,9 +45,9 @@ class Form
      * @param $name string
      * @return string
      */
-    public function input($name,$data = null)
+    public function input($type, $name, $placeholder = null, $data = null)
     {
-        return $this->arround('<input type="text" id="'.$name.'" name="'.$name.'" value="'.$this->getValue($name,$data).'">');
+        return $this->arround('<input type="'.$type.'" id="'.$name.'" name="'.$name.'" value="'.$this->getValue($name,$data).'" placeholder="'.$placeholder.'">');
     }
 
     /**
@@ -114,5 +114,11 @@ class Form
         $html .= '</select>';
         return $html;
     }
+    public function inputCheckbox($type,$name,$value,$class=NULL)
+    {
+        return $this->arround('<input type="'.$type.'" id="'.$name.'" name="'.$name.'" class="'.$class.'" value="'
+            .$value.'">');
+    }
+
 
 }

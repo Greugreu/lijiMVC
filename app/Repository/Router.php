@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-class Router
+class  Router
 {
     private $routes = [];
     private $pages = [];
